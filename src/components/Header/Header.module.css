@@ -9,7 +9,6 @@
   background: transparent;
   color: white;
   z-index: 1000;
-  font-family: 'Poppins', 'Arial', sans-serif;
 }
 
 .nav {
@@ -23,9 +22,14 @@
   font-weight: bold;
   font-size: 1rem;
   position: relative;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
+.nav a:hover {
+  color: #ddd;
+}
+
+/* Optional underline effect on hover */
 .nav a::after {
   content: '';
   display: block;
@@ -42,11 +46,6 @@
   width: 100%;
 }
 
-.nav a:hover {
-  color: #f0f0f0;
-  transform: scale(1.1);
-}
-
 .logo {
   position: absolute;
   left: 50%;
@@ -55,12 +54,4 @@
   font-weight: bold;
   letter-spacing: 2px;
   color: white;
-  transition: transform 0.3s ease, color 0.3s ease;
 }
-
-.logo:hover {
-  transform: translateX(-50%) scale(1.05);
-  color: #f0f0f0;
-}
-
-
