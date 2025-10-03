@@ -5,9 +5,9 @@ const Hero = () => {
   return (
     <section className={styles.hero} id="hero">
       <div className={styles.content}>
-        <h1>WelcoSme to Empaerial</h1>
-        <p>Innovative solutions for your business</p>
-        <button className={styles.cta}>Get Started</button>
+        <h1>Welcome to Empaerial</h1>
+        <p>A community of international students working on UAVs.</p>
+        <button className={styles.ctaButton}>Get Started</button>
       </div>
     </section>
   );
