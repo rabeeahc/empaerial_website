@@ -1,5 +1,47 @@
-.section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.footer {
+  background: rgba(39, 40, 34, 0);
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-family: 'Poppins', 'Arial', sans-serif;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.social a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+.social a:hover::after {
+  width: 100%;
+}
+
+.social a:hover {
+  color: var(--monokai-green);
+  transform: scale(1.2);
+}
+
+.footer p {
+  margin: 0;
 }
