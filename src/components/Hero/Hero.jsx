@@ -1,8 +1,9 @@
-import React from "react";
-import styles from "./Section.module.css";
-
-const Section = ({ children, className }) => {
-  return <section className={`${styles.section} ${className}`}>{children}</section>;
-};
-
-export default Section;
+.section {
+  padding: 100px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
