@@ -1,0 +1,38 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-default {
+  background: linear-gradient(90deg, #9b5de5, #f15bb5, #f76c6c);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.button-default:hover {
+  transform: scale(1.05) rotate(2deg);
+  filter: brightness(1.1);
+}
+
+.button-lg {
+  padding: 12px 32px;
+  font-size: 1.25rem;
+}
+
+.button-sm {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+}
+
+.button-icon {
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+}
