@@ -2,8 +2,8 @@
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  basePath: isProd ? '/empaerial-website' : '',
-  assetPrefix: isProd ? '/empaerial-website/' : '',
+  /*basePath: isProd ? '/empaerial-website' : '',*/
+  assetPrefix: '',
   images: {
     unoptimized: true,
   },
