@@ -8,7 +8,6 @@ const Footer = () => {
         <a href="https://www.instagram.com/_empaerial_" target="_blank" rel="noopener noreferrer">
           Instagram
         </a>
-        {"|" }
         <a href="https://www.linkedin.com/company/emp%C3%A6rial/" target="_blank" rel="noopener noreferrer">
           LinkedIn
         </a>
