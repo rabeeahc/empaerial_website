@@ -2,11 +2,10 @@
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  output: 'export', // static export
-  basePath: isProd ? '/empaerial-website' : '', // use basePath only in production
-  assetPrefix: isProd ? '/empaerial-website/' : '', // same for assets
+  basePath: isProd ? '/empaerial-website' : '',
+  assetPrefix: isProd ? '/empaerial-website/' : '',
   images: {
-    unoptimized: true, // needed for static export
+    unoptimized: true,
   },
 };
 
