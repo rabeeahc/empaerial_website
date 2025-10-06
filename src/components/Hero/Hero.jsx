@@ -14,7 +14,7 @@ const Hero = () => {
         </h1>
         <p>
           <span className={styles.string}>
-            "Empaerial — a community of international students building UAVs,
+            "Empaerial, a community of international students building UAVs,
             sharing knowledge, and innovating together."
           </span>
         </p>
