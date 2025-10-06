@@ -33,18 +33,24 @@ export default function Page() {
       <Hero />
 
       <Section className="fade-in" id="about">
-        <h2 className={styles.title}>About Us</h2>
-        <p className={styles.subtitle}>Empaerial is a community of international students working on UAVs, sharing knowledge and building innovation together.</p>
+        <h2 className={styles.title}>
+          <span className={styles.function}>About_Us()</span> {"{"}</h2>
+        <p className={styles.subtitle}>Empaerial is a community of international students working on UAVs,<br /> sharing knowledge and building innovation together.</p>
+        <h2 className={styles.title}>{"}"}</h2>
       </Section>
 
       <Section className="fade-in" id="services">
-        <h2 className={styles.title}>Services</h2>
-        <p className={styles.subtitle}>We offer UAV design, prototyping, and collaborative workshops to help students innovate and learn.</p>
+        <h2 className={styles.title}>
+          <span className={styles.function}>Services()</span> {"{"}</h2>
+        <p className={styles.subtitle}>We offer UAV design, prototyping, and collaborative workshops<br /> to help students innovate and learn.</p>
+        <h2 className={styles.title}>{"}"}</h2>
       </Section>
 
       <Section className="fade-in" id="contact">
-        <h2 className={styles.title}>Contact</h2>
+        <h2 className={styles.title}>
+          <span className={styles.function}>Contact()</span> {"{"}</h2>
         <p className={styles.subtitle}>Email us at contact@empaerial.com or follow us on social media.</p>
+        <h2 className={styles.title}>{"}"}</h2>
       </Section>
     </>
   );

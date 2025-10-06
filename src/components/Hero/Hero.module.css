@@ -8,9 +8,11 @@
   color: var(--text);
   width: 100%;
   background: radial-gradient(circle at center, #2b2b2b 0%, #1e1e1e 100%);
-  padding: 0 20px;
+  padding: 20 20px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 30px;
+  border-radius: 50px;
 }
 
 .content h1 {
@@ -18,7 +20,7 @@
   font-weight: 800;
   color: var(--function);
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   animation: fadeDown 1.2s ease forwards;
 }
 
@@ -31,7 +33,7 @@
 
 .button-container {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   animation: fadeUp 1.6s ease forwards;
 }
 

@@ -2,13 +2,13 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color:white;
+  color: var(--function);
   text-align: center;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: white;
+  color: var(--string);
   font-style: italic;
   margin-bottom: 40px;
   text-align: center;

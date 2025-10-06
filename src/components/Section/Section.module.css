@@ -8,9 +8,9 @@
   padding: 0px 20px;
   text-align: center;
   font-family: "Fira Code", monospace;
-  border-radius: 10px;
+  border-radius: 50px;
   animation: fadeUp 1s ease forwards;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .title {
