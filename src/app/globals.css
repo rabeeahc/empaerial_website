@@ -10,6 +10,13 @@
   --variable: #a6e22e;
   --comment: #75715e;
 }
+:root {
+  --blue-bg: #0a1f3d;        
+  --blue-text: #0e66f3;
+  --blue-accent: #032266;
+  --blue-accent-light: #012e83;
+  --blue-muted: #000000;
+}
 
 * {
   margin: 0;
@@ -167,6 +174,33 @@ footer a:hover {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease-out, transform 1s ease-out;
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    270deg,
+    var(--blue-bg),
+    var(--blue-muted),
+    var(--blue-bg)
+  );
+  background-size: 1200% 1200%;
+  animation: mirrorBG 20s ease infinite;
+  color: var(--blue-text);
+  scroll-behavior: smooth;
+}
+
+@keyframes mirrorBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .fade-in.visible {
@@ -213,4 +247,5 @@ a:hover {
 
 html {
   scroll-behavior: smooth;
+}
 }
