@@ -1,70 +1,56 @@
 .footer {
-  background: rgba(39, 40, 34, 0);
-  padding: 20px;
+  padding: 60px 20px;
   text-align: center;
-  color: white;
-}
-
-.footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.footer a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: -3px;
-  background: white;
-  transition: width 0.3s ease;
-}
-
-.footer a:hover::after {
-  width: 100%;
-}
-
-
-.footer a:hover {
-  color: #ddd;
+  background: rgba(30,30,30,0.9);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: var(--text);
+  font-family: "Fira Code", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .social {
-  margin-bottom: 15px;
+  display: flex;
+  gap: 25px;
+  margin: 10px 0;
 }
 
-.footer a {
-  color: white;
+.social a {
   text-decoration: none;
-  margin: 0 10px;
-  position: relative;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.footer a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: -3px;
-  background: white;
-  transition: width 0.3s ease;
+.social a:hover {
+  opacity: 0.8;
 }
 
-.footer a:hover::after {
-  width: 100%;
+.line {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
-
-.footer a:hover {
-  color: #ddd;
+.copy {
+  font-size: 0.95rem;
 }
 
-.social {
-  margin-bottom: 15px;
+.keyword {
+  color: var(--keyword);
+}
+
+.variable {
+  color: var(--variable);
+}
+
+.function {
+  color: var(--function);
+}
+
+.string {
+  color: var(--string);
+}
+
+.comment {
+  color: var(--comment);
 }

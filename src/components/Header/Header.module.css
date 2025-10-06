@@ -1,101 +1,56 @@
 .header {
-  position: fixed;
-  top: 0;
   width: 100%;
-  padding: 15px 50px;
+  padding: 20px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent;
-  color: white;
-  z-index: 1000;
+  background: rgba(30, 30, 30, 0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeDown 1s ease forwards;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Fira Code", monospace;
 }
 
 .nav {
   display: flex;
   gap: 25px;
+  font-family: "Fira Code", monospace;
 }
 
 .nav a {
-  color: white;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  position: relative;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .nav a:hover {
-  color: #ddd;
+  opacity: 0.8;
 }
 
-
-.nav a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: white;
-  transition: width 0.3s;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
+.keyword {
+  color: var(--keyword);
 }
 
-.nav a:hover::after {
-  width: 100%;
+.variable {
+  color: var(--variable);
 }
 
-.logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: white;
+.function {
+  color: var(--function);
 }
 
-.nav {
-  display: flex;
-  gap: 25px;
+.string {
+  color: var(--string);
 }
 
-.nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav a:hover {
-  color: #ddd;
-}
-
-.nav a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: white;
-  transition: width 0.3s;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-}
-
-.nav a:hover::after {
-  width: 100%;
-}
-
-.logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: white;
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

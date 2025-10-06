@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap');
+
 :root {
-  --blue-bg: #0a1f3d;        
-  --blue-text: #0e66f3;
-  --blue-accent: #032266;
-  --blue-accent-light: #012e83;
-  --blue-muted: #000000;
+  --bg: #211c1c;
+  --text: #f8f8f2;
+  --keyword: #f92672;
+  --function: #66d9ef;
+  --string: #e6db74;
+  --number: #ae81ff;
+  --variable: #a6e22e;
+  --comment: #75715e;
 }
 
 * {
@@ -12,33 +17,156 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Fira Code", monospace;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+main {
+  padding: 2rem;
+}
+
+h1, h2, h3, p, a, button {
+  transition: color 0.3s ease;
+}
+
+h1, h2 {
+  color: var(--keyword);
+}
+
+p {
+  color: var(--string);
+}
+
+a {
+  color: var(--function);
+}
+
+a:hover {
+  color: var(--variable);
+}
+
+section {
   min-height: 100vh;
-  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    270deg,
-    var(--blue-bg),
-    var(--blue-muted),
-    var(--blue-bg)
-  );
-  background-size: 1200% 1200%;
-  animation: mirrorBG 20s ease infinite;
-  color: var(--blue-text);
-  scroll-behavior: smooth;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-@keyframes mirrorBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+button {
+  background: transparent;
+  border: 1px solid var(--function);
+  color: var(--function);
+  padding: 0.75rem 1.5rem;
+  font-family: "Fira Code", monospace;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
+button:hover {
+  background: var(--function);
+  color: var(--bg);
+}
+
+header {
+  width: 100%;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(30,30,30,0.8);
+  color: var(--text);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+header a {
+  color: var(--function);
+  text-decoration: none;
+  margin: 0 15px;
+  position: relative;
+  font-weight: 500;
+}
+
+header a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--variable);
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+}
+
+header a:hover::after {
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--number);
+  letter-spacing: 2px;
+}
+
+footer {
+  padding: 30px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: var(--comment);
+}
+
+footer a {
+  color: var(--function);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  color: var(--variable);
+}
+
+.content h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--keyword);
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 1.4rem;
+  color: var(--string);
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--keyword);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--string);
+  text-align: center;
+  max-width: 800px;
+}
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .fade-in.visible {
@@ -46,6 +174,43 @@ body {
   transform: translateY(0);
 }
 
-main {
-  margin-top: 80px;
+.section::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--function), var(--keyword));
+  margin: 60px auto 0;
+  opacity: 0.4;
+}
+
+button {
+  background: transparent;
+  border: 1px solid var(--keyword);
+  color: var(--keyword);
+  font-family: "Fira Code", monospace;
+  padding: 12px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--keyword);
+  color: var(--bg);
+  transform: scale(1.05);
+}
+
+a {
+  color: var(--function);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+html {
+  scroll-behavior: smooth;
 }
