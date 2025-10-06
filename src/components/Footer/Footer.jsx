@@ -20,13 +20,13 @@ const Footer = () => {
           href="https://www.linkedin.com/company/emp%C3%A6rial/"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.variable}
+          className={styles.keyword}
         >
           LinkedIn()
         </a>
       </div>
       <p className={styles.copy}>
-        <span className={styles.keyword}>return</span>{" "}
+        <span className={styles.variable}>return</span>{" "}
         <span className={styles.string}>
           "© 2025 Empaerial. All rights reserved."
         </span>
