@@ -10,14 +10,11 @@
   left: 0;
   z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  animation: fadeDown 1s ease forwards;
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--number);
-  letter-spacing: 2px;
+  font-size: 1.2rem;
+  font-weight: 600;
   font-family: "Fira Code", monospace;
 }
 
@@ -36,17 +33,28 @@
   opacity: 0.8;
 }
 
-.keyword { color: var(--keyword); }
-.variable { color: var(--variable); }
-.function { color: var(--function); }
-.string { color: var(--string); }
+.keyword {
+  color: var(--keyword);
+}
 
-/* Hamburger Menu Styles */
+.variable {
+  color: var(--variable);
+}
+
+.function {
+  color: var(--function);
+}
+
+.string {
+  color: var(--string);
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+  z-index: 300;
 }
 
 .hamburger span {
@@ -56,20 +64,21 @@
   border-radius: 2px;
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .nav {
     display: none;
     flex-direction: column;
     position: fixed;
-    top: 70px;
+    top: 0;
     right: 0;
-    background: rgba(30, 30, 30, 0.95);
-    padding: 20px;
-    width: 200px;
-    height: calc(100% - 70px);
-    transition: transform 0.3s ease-in-out;
+    background: rgba(30, 30, 30, 0.98);
+    padding: 100px 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+    gap: 30px;
     transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
   }
 
   .nav.navOpen {
@@ -80,9 +89,4 @@
   .hamburger {
     display: flex;
   }
-}
-
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
