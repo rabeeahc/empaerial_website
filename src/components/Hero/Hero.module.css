@@ -12,7 +12,10 @@
   overflow: hidden;
   margin-bottom: 0;
   border-radius: 0;
+  font-family:"Merriweather", serif;
 }
+
+
 .content {
   display: flex;
   flex-direction: column;
@@ -22,19 +25,39 @@
 }
 
 .content h1 {
+  font-family: "Times New Roman", Times, serif;
   font-size: 4.5rem;
   font-weight: 800;
   color: var(--function);
   letter-spacing: 2px;
-  margin-bottom: 40p;
+  margin-bottom: 10px;
   animation: fadeDown 1.2s ease forwards;
 }
+
 
 .content p {
   font-size: 1.2rem;
   color: var(--string);
   margin-bottom: 0;
   animation: fadeUp 1.4s ease forwards;
+}
+.keyword {
+  color: var(--keyword);
+}
+
+.variable {
+  color: var(--variable);
+}
+
+.function {
+  color: var(--function);
+}
+
+.string {
+  color: var(--string);
+}
+.number{
+  color: var(--number);
 }
 
 

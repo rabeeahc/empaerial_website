@@ -24,6 +24,14 @@ const Footer = () => {
         >
           LinkedIn()
         </a>
+        <a
+          href="https://www.youtube.com/@Emp%C3%A6rial_UAV"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.number}
+        >
+          YouTube()
+        </a>
       </div>
       <p className={styles.copy}>
         <span className={styles.variable}>return</span>{" "}

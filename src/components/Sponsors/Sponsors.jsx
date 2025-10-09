@@ -17,7 +17,7 @@ export default function Sponsors() {
       <h2 className={styles.title}>Sponsors</h2>
       <div className={styles.carousel}>
         <div className={styles.track}>
-          {/* Duplicate logos to create seamless loop */}
+          {}
           {sponsors.concat(sponsors).map((logo, index) => (
             <div key={index} className={styles.logoWrapper}>
               <img src={logo} alt={`Sponsor ${index + 1}`} />

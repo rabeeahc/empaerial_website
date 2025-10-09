@@ -6,22 +6,40 @@ const teamData = [
   {
     team: "Software Team",
     description: "Frontend & Backend developers building the brains of our UAVs.",
-    members: ["Alice - Frontend", "Bob - Backend", "Charlie - Fullstack"],
+    members: [
+      { name: "Abdullah Amin", url: "/profiles/abdullah-amin" },
+      { name: "Aboubacar Sow", url: "/profiles/aboubacar-sow" },
+      { name: "Aine Mukama", url: "/profiles/aine-mukama" },
+      { name: "Azra", url: "/profiles/azra" },
+      { name: "Najibullah Muhammadi", url: "/profiles/najibullah-muhammadi" },
+      { name: "Rabeeah Chishti", url: "/profiles/rabeeah-chishti" },
+    ],
   },
   {
     team: "Electrical Team",
     description: "Circuit designers and electronics specialists making drones fly.",
-    members: ["Dana - Circuit Designer", "Eve - Electronics Engineer"],
+    members: [
+      { name: "Ahmed Mulki", url: "/profiles/ahmed-mulki" },
+      { name: "Ricky", url: "/profiles/ricky" },
+      { name: "William", url: "/profiles/william" },
+      { name: "Zawadi", url: "/profiles/zawadi" },
+    ],
   },
   {
     team: "Mechanical Team",
     description: "Frames & aerodynamics experts keeping drones stable and agile.",
-    members: ["Frank - Mechanical Engineer", "Grace - Aerodynamics Specialist"],
+    members: [
+      { name: "Ahmed Osman Mahamoud", url: "/profiles/ahmed-osman-mahamoud" },
+      { name: "Henry", url: "/profiles/henry" },
+      { name: "Hilmi Kabir", url: "/profiles/hilmi-kabir" },
+    ],
   },
   {
     team: "Coordinators",
     description: "Keeping the team organized and projects on track.",
-    members: ["Hannah - Team Lead", "Ian - Operations"],
+    members: [
+      { name: "Lujain Nofal", url: "/profiles/lujain-nofal" },
+    ],
   },
 ];
 
@@ -46,7 +64,14 @@ export default function Team() {
                 <h3>Team Members</h3>
                 <ul className={styles.membersList}>
                   {group.members.map((member, i) => (
-                    <li key={i}>{member}</li>
+                    <li key={i}>
+                      <a
+                        href={member.url}
+                        className={styles.memberLink}
+                      >
+                        {member.name}
+                      </a>
+                    </li>
                   ))}
                 </ul>
               </div>

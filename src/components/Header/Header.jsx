@@ -13,10 +13,8 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY && window.scrollY > 50) {
-        // Scrolling down
         setShow(false);
       } else {
-        // Scrolling up
         setShow(true);
       }
       setLastScrollY(window.scrollY);
@@ -40,7 +38,7 @@ const Header = () => {
       <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`}>
         <a href="#hero" className={styles.function}>Home()</a>
         <a href="#team" className={styles.keyword}>Team()</a>
-        <a href="#projects" className={styles.variable}>Projects()</a>
+        <a href="#projects" className={styles.number}>Projects()</a>
         <a href="#contact" className={styles.string}>Contact()</a>
       </nav>
 

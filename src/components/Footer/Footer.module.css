@@ -54,3 +54,6 @@
 .comment {
   color: var(--comment);
 }
+.number {
+  color: var(--number);
+}
