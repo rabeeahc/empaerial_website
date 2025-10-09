@@ -14,13 +14,9 @@ const Hero = () => {
         </h1>
         <p>
           <span className={styles.string}>
-            "Empaerial, a community of international students building UAVs,
-            sharing knowledge, and innovating together."
+      
           </span>
         </p>
-        <button className={styles.ctaButton}>
-          <span className={styles.function}>GET STARTED</span>
-        </button>
       </div>
     </section>
   );

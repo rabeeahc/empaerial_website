@@ -4,12 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(30, 30, 30, 0.85);
+  background: rgba(30, 30, 30, 0);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -90,3 +89,17 @@
     display: flex;
   }
 }
+.header {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.header.hide {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.header.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+

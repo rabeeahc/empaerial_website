@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap');
 
 :root {
-  --bg: #211c1c;
+  --bg: #121212;
   --text: #f8f8f2;
   --keyword: #f92672;
   --function: #66d9ef;
@@ -56,7 +56,6 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 button {
