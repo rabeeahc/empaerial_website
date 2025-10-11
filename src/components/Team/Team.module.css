@@ -22,12 +22,14 @@
   font-style: italic;
 }
 
+
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
+
 
 .bigCard {
   width: 300px;
@@ -91,6 +93,7 @@
   font-weight: 700;
   color: var(--function);
 }
+
 .membersList {
   list-style: none;
   padding: 0;
@@ -101,10 +104,11 @@
   margin-bottom: 10px;
   font-weight: 500;
   text-align: center;
+  position: relative;
 }
 
 .memberLink {
-  color: var(--stirng);
+  color: var(--string);
   text-decoration: none;
   transition: 0.3s;
 }
@@ -114,6 +118,57 @@
   text-decoration: underline;
 }
 
+.memberTooltip {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30,30,30,0.97);
+  color: #f8f8f2;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  width: 280px;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  z-index: 20;
+}
+
+.memberItem:hover .memberTooltip,
+.memberTooltip:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-10px);
+}
+.memberTooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(30,30,30,0.97) transparent transparent transparent;
+}
+.memberPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+.skillTag {
+  display: inline-block;
+  background: var(--keyword);
+  color: var(--bg);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin: 2px 2px 2px 0;
+}
 .teamButton {
   padding: 12px 30px;
   font-size: 1rem;
@@ -130,4 +185,16 @@
   background: var(--variable);
   color: var(--bg);
   transform: scale(1.05);
+}
+.variable{
+  color: var(--variable);
+}
+.string{
+  color: var(--string);
+}
+.number{
+  color: var(--number)
+}
+.function{
+  color: var(--function)
 }

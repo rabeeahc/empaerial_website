@@ -4,11 +4,10 @@ import React from "react";
 import styles from "./Sponsors.module.css";
 
 const sponsors = [
-  "/images/sponsor1.png",
-  "/images/sponsor2.png",
-  "/images/sponsor3.png",
-  "/images/sponsor4.png",
-  "/images/sponsor5.png",
+  "image1",
+  "image2",
+  "image3",
+  "image4",
 ];
 
 export default function Sponsors() {

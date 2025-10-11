@@ -7,7 +7,7 @@ const projectData = [
   {
     name: "Drone 1 Nmae",
     description: "Drone description",
-    image: "/images/drone1.jpg",
+    image: "image",
     specs: { weight: "1.5kg", wingspan: "1.2m", battery: "5000mAh" },
     bom: [
       { part: "Motor", qty: 4 },
@@ -18,7 +18,7 @@ const projectData = [
   {
     name: "Drone 2 Name",
     description: "Drone description",
-    image: "/images/drone2.jpg",
+    image: "image",
     specs: { weight: "1.1kg", wingspan: "0.9m", battery: "4000mAh" },
     bom: [
       { part: "Motor", qty: 4 },
