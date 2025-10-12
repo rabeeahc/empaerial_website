@@ -96,7 +96,7 @@ const teamData = [
       },
       {
         name: "William Amani",
-        url: " http://linkedin.com/in/william-amani-363ba12a5",
+        url: " https://linkedin.com/in/william-amani-363ba12a5",
         age: 20,
         country: "Rwanda",
         role: "Electronics department team leader.",
