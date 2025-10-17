@@ -63,8 +63,8 @@ const teamData = [
         age: 22,
         country: "India",
         role: "Website Architect",
-        skills: [""],
-        funFact: "...",
+        skills: ["Experirnced in web development, UI/UX design, problem solving, and version control with Git."],
+        funFact: "Can solve a Rubik's cube in under a minute which is ironic because it takes me 3 hours to fix a missing semicolon.",
         photo: "/images/rabeeah.JPG"
       },
 

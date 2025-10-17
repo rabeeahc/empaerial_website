@@ -5,25 +5,25 @@ import styles from "./Projects.module.css";
 
 const projectData = [
   {
-    name: "Drone 1 Nmae",
+    name: "VESPASIAN",
     description: "Drone description",
     image: "image",
-    specs: { weight: "1.5kg", wingspan: "1.2m", battery: "5000mAh" },
+    specs: { Weight: "0.97 kg", Max: "2.5 kg", Flight: "16.4 mins", Height: "157.76mm"},
     bom: [
-      { part: "Motor", qty: 4 },
+      { part: "Motor Mounts", qty: 4 },
       { part: "Propeller", qty: 4 },
       { part: "Flight Controller", qty: 1 },
     ],
   },
   {
-    name: "Drone 2 Name",
+    name: "Coming Soon",
     description: "Drone description",
     image: "image",
-    specs: { weight: "1.1kg", wingspan: "0.9m", battery: "4000mAh" },
+    specs: { weight: "?", wingspan: "?", battery: "?" },
     bom: [
-      { part: "Motor", qty: 4 },
-      { part: "Propeller", qty: 4 },
-      { part: "Flight Controller", qty: 1 },
+      { part: "Motor", qty: 0},
+      { part: "Propeller", qty: 0 },
+      { part: "Flight Controller", qty: 0 },
     ],
   },
 ];
