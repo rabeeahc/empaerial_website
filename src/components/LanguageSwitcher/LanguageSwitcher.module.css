@@ -1,0 +1,29 @@
+.langSwitch {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-family: "Fira Code", monospace;
+  color: rgba(255, 255, 255, 0.8);
+  user-select: none;
+}
+
+.langSwitch span {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.langSwitch span:hover {
+  color: var(--function);
+}
+
+@media (max-width: 768px) {
+  .langSwitch {
+    right: 20px;
+    top: 15px;
+    font-size: 0.8rem;
+  }
+}

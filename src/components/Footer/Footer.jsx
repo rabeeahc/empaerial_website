@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./Footer.module.css";
 
-const Footer = () => {
+export default function Footer({ t }) {
   return (
     <footer className={styles.footer}>
       <p className={styles.line}>
-        <span className={styles.comment}>// Follow us on social media</span>
+        <span className={styles.comment}>// {t.footer_follow}</span>
       </p>
+
       <div className={styles.social}>
         <a
           href="https://www.instagram.com/_empaerial_"
@@ -14,7 +15,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className={styles.function}
         >
-          Instagram()
+          {t.footer_instagram}
         </a>
         <a
           href="https://www.linkedin.com/company/emp%C3%A6rial/"
@@ -22,7 +23,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className={styles.keyword}
         >
-          LinkedIn()
+          {t.footer_linkedin}
         </a>
         <a
           href="https://www.youtube.com/@Emp%C3%A6rial_UAV"
@@ -30,17 +31,14 @@ const Footer = () => {
           rel="noopener noreferrer"
           className={styles.number}
         >
-          YouTube()
+          {t.footer_youtube}
         </a>
       </div>
+
       <p className={styles.copy}>
         <span className={styles.variable}>return</span>{" "}
-        <span className={styles.string}>
-          "© 2025 Empaerial. All rights reserved."
-        </span>
+        <span className={styles.string}>{t.footer_copyright}</span>
       </p>
     </footer>
   );
-};
-
-export default Footer;
+}

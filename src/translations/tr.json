@@ -1,0 +1,131 @@
+{
+  "nav_home": "AnaSayfa()",
+  "nav_team": "Takım()",
+  "nav_projects": "Projeler()",
+  "nav_contact": "İletişim()",
+
+  "hero_title": "EMPAERIAL",
+  "hero_subtitle": "Empaerial, İHA’lar üzerine çalışan, bilgi paylaşan ve yenilik üreten uluslararası öğrencilerden oluşan bir topluluktur.",
+
+  "team_title": "Ekibimizle Tanışın",
+  "team_subtitle": "Dünyanın dört bir yanından gelen tutkulu öğrenciler — yaratıcılığı, mühendisliği ve iş birliğini birleştirerek İHA’ların geleceğini inşa ediyoruz.",
+  "projects_title": "Projelerimiz",
+  "sponsors_title": "Sponsorlarımız",
+
+  "contact_title": "İletişim() {",
+  "contact_text": "Bize contact@empaerial.com adresinden e-posta gönderebilir veya sosyal medyada bizi takip edebilirsiniz.",
+  "contact_end": "}",
+
+  "projects_subtitle": "Burada geliştirdiğimiz ve tamamladığımız droneları, görselleri, teknik özellikleri ve malzeme listeleriyle sergiliyoruz.",
+  "projects_vespasian_name": "VESPASIAN",
+  "projects_vespasian_desc": "Verimli ve dengeli uçuş için tasarlanmış hafif bir drone.",
+  "projects_comingsoon_name": "Yakında",
+  "projects_comingsoon_desc": "Geliştirilmekte olan yeni bir drone projesi.",
+
+  "specs_title": "Teknik Özellikler:",
+  "bom_title": "Malzeme Listesi (BOM):",
+  "bom_part": "Parça",
+  "bom_qty": "Miktar",
+  "bom_motor_mounts": "Motor Bağlantısı",
+  "bom_propeller": "Pervane",
+  "bom_flight_controller": "Uçuş Kontrolcüsü",
+  "bom_motor": "Motor",
+
+  "footer_follow": "Bizi sosyal medyada takip edin",
+  "footer_instagram": "Instagram()",
+  "footer_linkedin": "LinkedIn()",
+  "footer_youtube": "YouTube()",
+  "footer_copyright": "© 2025 Empaerial. Tüm hakları saklıdır.",
+
+  "team_members": "Takım Üyeleri",
+  "team_age": "Yaş:",
+  "team_country": "Ülke:",
+  "team_role": "Görev:",
+  "team_skills": "Yetenekler:",
+  "team_funfact": "Eğlenceli Bilgi:",
+
+  "team_software_title": "Yazılım Ekibi",
+  "team_software_desc": "İHA’larımızın beyni olan yazılımı geliştiren frontend ve backend geliştiriciler.",
+
+  "team_electronics_title": "Elektronik Ekibi",
+  "team_electronics_desc": "Devre tasarımcıları ve elektronik uzmanları, droneları uçuruyorlar.",
+
+  "team_mechanical_title": "Mekanik Ekip",
+  "team_mechanical_desc": "Droneları dengede ve çevik tutan çerçeve ve aerodinamik uzmanları.",
+
+  "team_coord_title": "Koordinatörler",
+  "team_coord_desc": "Takımı organize eden ve projeleri planlı şekilde ilerleten ekip.",
+
+  "members": {
+  "abdullah": {
+    "role": "Yazılım Ekibi (Görüntü İşleme ve Drone Görüşü)",
+    "skills": "Derin öğrenme, Bilgisayarlı Görü, Diller: Dari, İngilizce, Türkçe.",
+    "funfact": "Hem sinir ağlarını hem kasları eğitmeyi seviyorum — gündüz yapay zeka, gece spor salonu 💪🤖"
+  },
+  "aboubacar": {
+    "role": "Yazılım Ekibi Lideri",
+    "skills": ".NET Backend Mühendisi, kaputun altındaki sistemleri anlamaya tutkulu.",
+    "funfact": "Futbol oynamayı seviyorum ⚽"
+  },
+  "aine": {
+    "role": "Telemetri Geliştiricisi",
+    "skills": "Araştırma ve kodlama",
+    "funfact": "Eğlenceli bilgi: Dünyanın en iyi futbol takımını destekliyorum — Arsenal 🔴⚪"
+  },
+  "azra": {
+    "role": "Yazılım Geliştirici",
+    "skills": "Sağlık ve teknolojiyi birleştirmek — geleceğin eczacısı ve kod yazarı 💊💻",
+    "funfact": "Kod yazmayı seven bir eczacılık öğrencisi — tıp ve teknoloji dünyalarını birleştiriyor."
+  },
+  "najib": {
+    "role": "Yazılım Ekibi (Görüntü işleme ve Drone görüşü)",
+    "skills": "C, Java, Python. İngilizce, Dari, Türkçe, Hintçe, Özbekçe konuşur.",
+    "funfact": "Hem insanların hem bilgisayarların dillerini öğreniyorum 🤓"
+  },
+  "rabeeah": {
+    "role": "Web Sitesi Mimarı",
+    "skills": "Web geliştirme, UI/UX, Git, problem çözme.",
+    "funfact": "Bir Rubik küpünü bir dakikanın altında çözebilirim — ama bir noktalı virgülü düzeltmek saatler sürer 😅"
+  },
+  "ahmedmulki": {
+    "role": "Elektronik Takım Üyesi",
+    "skills": "Gömülü sistem donanım/yazılım geliştirme.",
+    "funfact": "Mesajlara anında cevap veriyorum 🌚"
+  },
+  "johnricky": {
+    "role": "Elektronik Takım Üyesi",
+    "skills": "Elektronik tasarım, test ve entegrasyon.",
+    "funfact": "Sanatsal ve komik 😌"
+  },
+  "william": {
+    "role": "Elektronik Departmanı Takım Lideri",
+    "skills": "Orta seviye düşük seviyeli programlama.",
+    "funfact": "Her zaman devrelerle deneyler yapıyorum ⚡"
+  },
+  "zawadi": {
+    "role": "Elektronik ve Yazılım Entegrasyonu",
+    "skills": "3 programlama dilinde ve genel elektronik konusunda yetkin.",
+    "funfact": "Kahve aromalı şeyleri seviyorum, ama kahvenin kendisini değil 🫣"
+  },
+  "ahmedosman": {
+    "role": "Kaptan (her takıma yardım eder, şakalar yapar)",
+    "skills": "Mekanik tasarım, kodlama, araştırma, 5 dil konuşur.",
+    "funfact": "Harika bir maymun yüzü yapabilirim ama ırkçı gibi görünmeden benden bunu yapmamı istemene meydan okuyorum 🙂"
+  },
+  "henry": {
+    "role": "Mekanik Takım Üyesi",
+    "skills": "3D modelleme ve test.",
+    "funfact": "Drone kazaları sırasında bile her zaman sakinim 🛠️"
+  },
+  "hilmi": {
+    "role": "Mekanik Tasarım ve Malzeme Seçimi",
+    "skills": "CAD tasarımı, BOM hazırlığı.",
+    "funfact": "Eğer sinirliysem, muhtemelen yöneticim yine benimle uğraşmıştır 😃"
+  },
+  "lujain": {
+    "role": "Koordinatör ve Etkinlik Planlayıcısı",
+    "skills": "Öğretme, organizasyon, yaratıcı el işleri.",
+    "funfact": "Kod yazmam — insanları birbirine bağlarım 🙂‍↔️"
+  }
+}
+}

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 80vh;
+  height: 100vh;
   text-align: center;
   color: var(--text);
   width: 100%;
@@ -12,8 +12,17 @@
   overflow: hidden;
   margin-bottom: 0;
   border-radius: 0;
-  font-family:"Merriweather", serif;
-}
+  font-family: "Merriweather", serif;
+
+  /* Background */
+  /*background-image:
+    linear-gradient(rgba(32, 32, 32, 0.85), rgba(18, 18, 18, 0.85)),
+    url("/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}*/
 
 
 .content {
@@ -22,6 +31,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+  transform: translate(40px, 30px); /* 👉 move right 40px, down 30px */
 }
 
 .content h1 {
@@ -34,33 +44,20 @@
   animation: fadeDown 1.2s ease forwards;
 }
 
-
 .content p {
   font-size: 1.2rem;
   color: var(--string);
   margin-bottom: 0;
   animation: fadeUp 1.4s ease forwards;
 }
-.keyword {
-  color: var(--keyword);
-}
 
-.variable {
-  color: var(--variable);
-}
-
-.function {
-  color: var(--function);
-}
-
-.string {
-  color: var(--string);
-}
-.number{
-  color: var(--number);
-}
-
-
+/* Color variables */
+.keyword { color: var(--keyword); }
+.variable { color: var(--variable); }
+.function { color: var(--function); }
+.string { color: var(--string); }
+.number { color: var(--number); }
+.text { color: var(--text); }
 
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-30px); }
@@ -70,4 +67,5 @@
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
 }

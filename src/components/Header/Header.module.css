@@ -1,86 +1,183 @@
+/* -------------------- */
+/* 🟩 HEADER BASE SETUP */
+/* -------------------- */
 .header {
   width: 100%;
-  padding: 20px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgb(30, 30, 30);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
+  background: rgba(15, 15, 15, 0); /* Transparent like your inspiration */
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
+/* Hide/show on scroll */
+.header.hide {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+.header.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* -------------------- */
+/* 🔹 CONTAINER LAYOUT */
+/* -------------------- */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 14px 0;
+}
+
+/* -------------------- */
+/* 🟦 LOGO STYLES */
+/* -------------------- */
 .logo {
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-family: "Fira Code", monospace;
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+  position: relative;
+  z-index: 350; /* ensures logo is always clickable */
+}
+.logoImage {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.logoImage:hover {
+  transform: scale(1.05);
 }
 
+/* -------------------- */
+/* 🟧 NAVIGATION STYLES */
+/* -------------------- */
 .nav {
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 30px;
   font-family: "Fira Code", monospace;
+  margin-right: -200px;
+  position: relative;
+  z-index: 200; /* below logo and hamburger */
 }
-
-.nav a {
+.navLink {
   text-decoration: none;
-  transition: 0.3s ease;
+  font-size: 1rem;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
-
-.nav a:hover {
+.navLink:hover {
   opacity: 0.8;
 }
 
-.keyword {
-  color: var(--keyword);
-}
-
-.variable {
-  color: var(--variable);
-}
-
+/* Code-style colors */
 .function {
   color: var(--function);
 }
-
+.keyword {
+  color: var(--keyword);
+}
 .string {
   color: var(--string);
 }
-.number{
+.number {
   color: var(--number);
 }
 
+/* -------------------- */
+/* 🟨 LANGUAGE SWITCHER */
+/* -------------------- */
+.langSwitch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: rgba(214, 197, 197, 0.7);
+  margin-left: 10px;
+}
+.langSwitch span {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.langSwitch span:hover {
+  color: var(--function);
+}
+
+/* -------------------- */
+/* 🟥 HAMBURGER MENU */
+/* -------------------- */
 .hamburger {
   display: none;
   flex-direction: column;
-  cursor: pointer;
   gap: 5px;
-  z-index: 300;
+  cursor: pointer;
+  position: relative;
+  z-index: 400; /* stays above everything */
 }
-
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: var(--function);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+/* “X” animation when active */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* -------------------- */
+/* 📱 RESPONSIVE DESIGN */
+/* -------------------- */
+@media (max-width: 1200px) {
+  .container {
+    width: 94%;
+  }
+
+  .logo {
+    margin-left: 35px;
+  }
+
+  .nav {
+    gap: 22px;
+    margin-right: 35px;
+  }
+}
+
+/* 🧭 Hamburger and overlay for small screens */
+@media (max-width: 1250px) {
+  .hamburger {
+    display: flex;
+    margin-right: 25px;
+  }
+
   .nav {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     right: 0;
-    background: rgba(30, 30, 30, 0.98);
-    padding: 100px 20px;
     width: 100%;
-    height: 100%;
-    z-index: 200;
-    gap: 30px;
+    height: 100vh;
+    background: rgba(15, 15, 15, 0.96);
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+    z-index: 200;
+    gap: 30px;
   }
 
   .nav.navOpen {
@@ -88,20 +185,31 @@
     transform: translateX(0);
   }
 
-  .hamburger {
-    display: flex;
+  .navLink {
+    font-size: 1.3rem;
   }
-}
-.header {
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
 
-.header.hide {
-  transform: translateY(-120%);
-  opacity: 0;
-}
+  .langSwitch {
+    margin-top: 20px;
+  }
 
-.header.show {
-  transform: translateY(0);
-  opacity: 1;
+  .logo {
+    margin-left: 20px;
+  }
+
+  .nav {
+    margin-right: 0;
+  }
+
+  /* Optional overlay */
+  .nav.navOpen::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+  }
 }

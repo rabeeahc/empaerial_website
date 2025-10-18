@@ -6,11 +6,7 @@ const Hero = () => {
     <section className={styles.hero} id="hero">
       <div className={styles.content}>
         <h1>
-          <span className={styles.keyword}>EM</span>
-          <span className={styles.function}>P</span>
-          <span className={styles.number}>Æ</span>
-          <span className={styles.function}>RI</span>
-          <span className={styles.number}>AL</span>
+          <span className={styles.text}>EMPAERIAL</span>
         </h1>
         <p>
           <span className={styles.string}>
