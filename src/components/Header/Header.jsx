@@ -38,12 +38,12 @@ const Header = ({ t, lang, setLang }) => {
   return (
     <header className={`${styles.header} ${show ? styles.show : styles.hide}`}>
       <div className={styles.container}>
-        {/* Logo */}
+        {}
         <a href="/" className={styles.logo} onClick={closeMenu}>
           <img src="/images/logo.png" alt="Empaerial Logo" className={styles.logoImage} />
         </a>
 
-        {/* Navigation + Language Switcher */}
+        {}
         <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ''}`}>
           <a href="#hero" className={`${styles.navLink} ${styles.function}`} onClick={closeMenu}>
             {t.nav_home}

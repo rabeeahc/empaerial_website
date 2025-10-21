@@ -1,16 +1,21 @@
-.projectsSection {
+.projectSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
+}
+
+/* ==== Header ==== */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--function);
-  margin-bottom: 10px;
-  text-align: center;
+  margin-bottom: 15px;
 }
 
 .subtitle {
@@ -18,72 +23,294 @@
   color: var(--string);
   text-align: center;
   max-width: 700px;
-  margin-bottom: 40px;
+  margin: 0 auto;
+  font-style: italic;
 }
 
-.cardsContainer {
+/* ==== Horizontal Scroll ==== */
+.projectRow {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
   gap: 30px;
+  width: 100%;
+  padding: 20px 0;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
+.projectRow::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==== Project Cards ==== */
 .projectCard {
+  flex: 0 0 340px;
+  scroll-snap-align: start;
   background: linear-gradient(135deg, #001418, #048d9c);
-  color: #fff;
-  width: 300px;
   border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .projectCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
 }
 
-.projectImage {
+.previewImageContainer {
   width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #002831, #000);
 }
 
-.projectName {
-  font-size: 1.6rem;
-  font-weight: 700;
+.previewImage {
+  width: 85%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: transform 0.4s ease;
+}
+
+.previewImageContainer:hover .previewImage {
+  transform: scale(1.03);
+}
+
+.projectOverview {
+  text-align: center;
+  padding: 25px;
+}
+
+.projectOverview h2 {
+  color: var(--function);
+  font-size: 1.8rem;
   margin-bottom: 10px;
 }
 
-.projectDesc {
+.projectOverview p {
+  color: var(--string);
   font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.expandButton {
+  background: var(--function);
+  border: none;
+  color: var(--bg);
+  font-family: "Fira Code", monospace;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.expandButton:hover {
+  background: var(--text);
+  transform: scale(1.05);
+}
+
+/* ==== Modal ==== */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalCard {
+  background: rgba(10, 20, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px 40px;
+  max-width: 700px;
+  width: 90%;
+  color: #fff;
+  position: relative;
+  animation: popUp 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  color: var(--function);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.modalSubtitle {
+  color: var(--string);
+  font-style: italic;
   margin-bottom: 15px;
 }
 
-.specs, .bom {
-  margin-top: 10px;
-  text-align: left;
+.modalDescription {
+  color: var(--text);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
-.specs ul {
-  list-style: disc;
-  margin-left: 20px;
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+.closeButton:hover {
+  background: transparent !important;
+  transform: scale(1.05);
 }
 
-.bom table {
+
+/* ==== Specs Section ==== */
+.specsSection {
+  margin-bottom: 25px;
+}
+
+.specsSection p {
+  color: var(--text);
+  font-size: 1rem;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+/* ==== BOM Section ==== */
+.bomSection {
+  margin-top: 25px;
+}
+
+.bomTitle {
+  color: var(--function);
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.bomTable {
   width: 100%;
   border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.bom th, .bom td {
-  border: 1px solid #fff;
-  padding: 5px 10px;
-  text-align: left;
+.bomTable td {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 0.95rem;
 }
 
-.bom th {
-  background: rgba(255,255,255,0.1);
+.bomTable tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bomTable tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==== Carousel ==== */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #002831, #000);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 25px;
+}
+
+.mainImage {
+  width: 90%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arrow {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.arrow:hover {
+  background: transparent;
+  transform: scale(1.1);
+}
+
+.arrow:focus,
+.arrow:active {
+  background: transparent;
+  outline: none;
+}
+
+
+
+.arrow:first-of-type {
+  left: 0px;
+}
+
+.arrow:last-of-type {
+  right: 0px;
+}
+
+/* ==== Animations ==== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.97);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 900px) {
+  .projectRow {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 15px;
+  }
+
+  .projectCard {
+    flex: 0 0 280px;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
 }

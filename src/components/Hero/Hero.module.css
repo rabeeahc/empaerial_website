@@ -15,15 +15,14 @@
   font-family: "Merriweather", serif;
 
   /* Background */
-  /*background-image:
+  background-image:
     linear-gradient(rgba(32, 32, 32, 0.85), rgba(18, 18, 18, 0.85)),
     url("/images/background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-}*/
-
+}
 
 .content {
   display: flex;
@@ -31,7 +30,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  transform: translate(40px, 30px); /* 👉 move right 40px, down 30px */
+  transform: translate(40px, 30px);
 }
 
 .content h1 {
@@ -51,7 +50,6 @@
   animation: fadeUp 1.4s ease forwards;
 }
 
-/* Color variables */
 .keyword { color: var(--keyword); }
 .variable { color: var(--variable); }
 .function { color: var(--function); }
@@ -67,5 +65,4 @@
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
-}
 }

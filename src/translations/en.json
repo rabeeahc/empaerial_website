@@ -16,21 +16,6 @@
   "contact_text": "Email us at contact@empaerial.com or follow us on social media.",
   "contact_end": "}",
 
-  "projects_subtitle": "Here we showcase the drones we are building and those completed, including images, specs, and BOM.",
-  "projects_vespasian_name": "VESPASIAN",
-  "projects_vespasian_desc": "A lightweight drone designed for efficient, stable flight.",
-  "projects_comingsoon_name": "Coming Soon",
-  "projects_comingsoon_desc": "A new drone project currently in development.",
-
-  "specs_title": "Specs:",
-  "bom_title": "Bill of Materials (BOM):",
-  "bom_part": "Part",
-  "bom_qty": "Quantity",
-  "bom_motor_mounts": "Motor Mounts",
-  "bom_propeller": "Propeller",
-  "bom_flight_controller": "Flight Controller",
-  "bom_motor": "Motor",
-
   "footer_follow": "Follow us on social media",
   "footer_instagram": "Instagram()",
   "footer_linkedin": "LinkedIn()",
@@ -57,76 +42,112 @@
   "team_coord_desc": "Keeping the team organized and projects on track.",
 
   "members": {
-  "abdullah": {
-    "role": "Software Team (Image Processing & Drone Vision).",
-    "skills": "Deep learning, Computer Vision. Languages= Dari, English, Turkish.",
-    "funfact": "I love training both neural networks and muscles — AI by day, gym by night 💪🤖"
+    "abdullah": {
+      "role": "Software Team (Image Processing & Drone Vision).",
+      "skills": "Deep learning, Computer Vision. Languages: Dari, English, Turkish.",
+      "funfact": "I love training both neural networks and muscles — AI by day, gym by night 💪🤖"
+    },
+    "aboubacar": {
+      "role": "Software Team Leader",
+      "skills": ".Net Backend Engineer, loves understanding how things work under the hood.",
+      "funfact": "Love playing football ⚽"
+    },
+    "aine": {
+      "role": "Working on telemetry",
+      "skills": "Research & coding",
+      "funfact": "Fun fact: I support the best football team in the world — Arsenal 🔴⚪"
+    },
+    "azra": {
+      "role": "Software Developer",
+      "skills": "Hard to list, easier to witness. Just wait until you see me in action.",
+      "funfact": "I’m a 3rd-year pharmacy student, but that doesn’t stop me from diving into technology. The future of healthcare is digital — I want to blend both worlds through code. 💊💻"
+    },
+    "najib": {
+      "role": "Software Team (Image Processing & Drone Vision)",
+      "skills": "Programming languages: C, Java, Python. Human languages: English, Dari, Turkish, Hindi, Uzbek. Excellent problem-solving skills.",
+      "funfact": "I learn the languages of humans and computers."
+    },
+    "rabeeah": {
+      "role": "Website Architect",
+      "skills": "Experienced in web development, UI/UX design, problem-solving, and version control with Git.",
+      "funfact": "Can solve a Rubik's cube in under a minute — ironic since it takes me 3 hours to fix a missing semicolon."
+    },
+    "ahmedmulki": {
+      "role": "Electronics Team Member",
+      "skills": "Embedded systems hardware and software development. Languages: Arabic, Turkish, English.",
+      "funfact": "I love replying to messages instantly 🌚"
+    },
+    "johnricky": {
+      "role": "Electronics Team Member",
+      "skills": "...",
+      "funfact": "I’m artistic and funny 😌"
+    },
+    "william": {
+      "role": "Electronics Department Team Leader",
+      "skills": "Intermediate low-level programming.",
+      "funfact": "..."
+    },
+    "zawadi": {
+      "role": "Electronics Team (Electronics & Software Integration)",
+      "skills": "Proficient in 3 programming languages and general electronics.",
+      "funfact": "I love coffee-flavored things, but not coffee itself 🫣"
+    },
+    "ahmedosman": {
+      "role": "Captain (no official role, hangs with everyone and makes jokes).",
+      "skills": "Mechanical design, intermediate coding skills, excellent online research, speaks 5 languages and counting.",
+      "funfact": "I can make a great monkey face — but don’t dare me to do it 🙂"
+    },
+    "henry": {
+      "role": "Mechanical Team Member",
+      "skills": "...",
+      "funfact": "..."
+    },
+    "hilmi": {
+      "role": "Mechanical design, material selection, BOM preparation — basically suffering on the same boat with Henry and Osman :D",
+      "skills": "Jack of all trades but master of none. :D",
+      "funfact": "If you ever see me annoyed, it means my manager messed with me again 😃"
+    },
+    "lujain": {
+      "role": "Coordinating team support operations and overseeing planning and execution of events.",
+      "skills": "Experienced in teaching, enjoys expressing creativity through handcrafts.",
+      "funfact": "I don’t code — I connect people 🙂‍↔️"
+    }
   },
-  "aboubacar": {
-    "role": "Software Team Leader",
-    "skills": ".Net Backend Engineer, love understanding how things work under hood.",
-    "funfact": "Love playing football ⚽"
-  },
-  "aine": {
-    "role": "Working on the telemetry",
-    "skills": "Research & coding",
-    "funfact": "Fun fact is I support the best football team in the world — Arsenal 🔴⚪"
-  },
-  "azra": {
-    "role": "Software Developer",
-    "skills": "Hard to list easier to witness. Just wait until you see me in action.",
-    "funfact": "I am a 3rd year pharmacy student but that doesn’t stop me from staying away from technology. The future of healthcare is digital that’s why I want to blend both worlds through code. 💊💻"
-  },
-  "najib": {
-    "role": "Software Team (Image processing & Drone vision)",
-    "skills": "Programming langs = C, Java, Python. Human langs = English, Dari, Turkish, Hindi, Uzbek. Great problem solving skills.",
-    "funfact": "I learn languages of humans & computers."
-  },
-  "rabeeah": {
-    "role": "Website Architect",
-    "skills": "Experirnced in web development, UI/UX design, problem solving, and version control with Git.",
-    "funfact": "Can solve a Rubik's cube in under a minute which is ironic because it takes me 3 hours to fix a missing semicolon."
-  },
-  "ahmedmulki": {
-    "role": "Electronics team member.",
-    "skills": "Embedded systems hardware and software development, languages = Arabic, Turkish, English",
-    "funfact": "I love replying to messages so fast (instantly)🌚"
-  },
-  "johnricky": {
-    "role": "Electronics team member.",
-    "skills": "...",
-    "funfact": "I am artistic and funny😌."
-  },
-  "william": {
-    "role": "Electronics department team leader.",
-    "skills": "Intermediate low level programming.",
-    "funfact": "..."
-  },
-  "zawadi": {
-    "role": "Electronics Team (Electronics & Software integration).",
-    "skills": "Proficient in 3 Programming Languages and General Electronics.",
-    "funfact": "I love coffee flavoured things but coffee not so much🫣."
-  },
-  "ahmedosman": {
-    "role": "Captain (otherwise called no job description just hangs with everyone and makes jokes).",
-    "skills": "Mechanical design, intermediate coding skills, very good at online research, 5 languages and more on the way, etc etc.",
-    "funfact": "I can make a great monkey face but I dare you to ask me to do it without sounding racist 🙂"
-  },
-  "henry": {
-    "role": "Mecahnical team member.",
-    "skills": "...",
-    "funfact": "..."
-  },
-  "hilmi": {
-    "role": "Mechanical design, material selection, BOM preparation and anticipating for more to come. To keep it short, suffering with Henry and Osman on the same boat.:D",
-    "skills": "Jack of all trades but master of none. :D",
-    "funfact": "If you see me angry or annoyed, just know that my manager has messed with me again. 😃"
-  },
-  "lujain": {
-    "role": "Coordinating the team’s support operations, overseeing the planning and execution of events.",
-    "skills": "Experienced in teaching, enjoy expressing my creativity through handcrafts.",
-    "funfact": "I don’t code, I connect people 🙂‍↔️"
+
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Here we showcase the drones we are building and those completed, including images, specs, and BOM.",
+    "viewDetails": "View Details →",
+    "comingSoon": "Coming Soon",
+    "bomTitle": "BOM",
+
+    "vespasian": {
+      "name": "Vespasian",
+      "summary": "Lightweight quadcopter prototype for stable flight and durability.",
+      "description": "Vespasian is a lightweight quadcopter prototype featuring carbon fiber arms and 3D-printed PLA body components, designed for stability, modularity, and precision performance.",
+      "specs": {
+        "weight": "Weight: 970 g or 0.97 kg",
+        "maxTakeoff": "Max takeoff weight: 2.5 kg",
+        "flightDuration": "Flight duration (no load): 16.4 minutes",
+        "frameLength": "Frame length: 478.28 mm",
+        "height": "Height: 157.76 mm"
+      },
+      "bom": {
+        "Arms": "10/8 3K carbon fiber",
+        "Motor mounts": "Standard PLA Plastic",
+        "Arm to Chassis connection": "Standard PLA Plastic",
+        "Chassis": "Standard PLA Plastic",
+        "ESCs": "20A SimonK",
+        "Motors": "EMAX A2212 980KV",
+        "Battery": "RC Master 2200 mAh 30C Li-po",
+        "Props": "Plastic 1045",
+        "Flight Controller": "ESP32S",
+        "Firmware": "ESP-FC (by RTLopez) Betaflight compatible"
+      }
+    },
+
+    "drone2": { "name": "Drone 2", "summary": "Coming Soon" },
+    "drone3": { "name": "Drone 3", "summary": "Coming Soon", "description": "TBD" },
+    "drone4": { "name": "Drone 4", "summary": "Coming Soon" }
   }
 }
-}
- 

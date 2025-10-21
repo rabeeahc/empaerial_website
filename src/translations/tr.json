@@ -15,22 +15,6 @@
   "contact_title": "İletişim() {",
   "contact_text": "Bize contact@empaerial.com adresinden e-posta gönderebilir veya sosyal medyada bizi takip edebilirsiniz.",
   "contact_end": "}",
-
-  "projects_subtitle": "Burada geliştirdiğimiz ve tamamladığımız droneları, görselleri, teknik özellikleri ve malzeme listeleriyle sergiliyoruz.",
-  "projects_vespasian_name": "VESPASIAN",
-  "projects_vespasian_desc": "Verimli ve dengeli uçuş için tasarlanmış hafif bir drone.",
-  "projects_comingsoon_name": "Yakında",
-  "projects_comingsoon_desc": "Geliştirilmekte olan yeni bir drone projesi.",
-
-  "specs_title": "Teknik Özellikler:",
-  "bom_title": "Malzeme Listesi (BOM):",
-  "bom_part": "Parça",
-  "bom_qty": "Miktar",
-  "bom_motor_mounts": "Motor Bağlantısı",
-  "bom_propeller": "Pervane",
-  "bom_flight_controller": "Uçuş Kontrolcüsü",
-  "bom_motor": "Motor",
-
   "footer_follow": "Bizi sosyal medyada takip edin",
   "footer_instagram": "Instagram()",
   "footer_linkedin": "LinkedIn()",
@@ -57,75 +41,109 @@
   "team_coord_desc": "Takımı organize eden ve projeleri planlı şekilde ilerleten ekip.",
 
   "members": {
-  "abdullah": {
-    "role": "Yazılım Ekibi (Görüntü İşleme ve Drone Görüşü)",
-    "skills": "Derin öğrenme, Bilgisayarlı Görü, Diller: Dari, İngilizce, Türkçe.",
-    "funfact": "Hem sinir ağlarını hem kasları eğitmeyi seviyorum — gündüz yapay zeka, gece spor salonu 💪🤖"
+    "abdullah": {
+      "role": "Yazılım Ekibi (Görüntü İşleme ve Drone Görüşü)",
+      "skills": "Derin öğrenme, Bilgisayarlı Görü, Diller: Dari, İngilizce, Türkçe.",
+      "funfact": "Hem sinir ağlarını hem kasları eğitmeyi seviyorum — gündüz yapay zeka, gece spor salonu 💪🤖"
+    },
+    "aboubacar": {
+      "role": "Yazılım Ekibi Lideri",
+      "skills": ".NET Backend Mühendisi, kaputun altındaki sistemleri anlamaya tutkulu.",
+      "funfact": "Futbol oynamayı seviyorum ⚽"
+    },
+    "aine": {
+      "role": "Telemetri Geliştiricisi",
+      "skills": "Araştırma ve kodlama",
+      "funfact": "Eğlenceli bilgi: Dünyanın en iyi futbol takımını destekliyorum — Arsenal 🔴⚪"
+    },
+    "azra": {
+      "role": "Yazılım Geliştirici",
+      "skills": "Sağlık ve teknolojiyi birleştirmek — geleceğin eczacısı ve kod yazarı 💊💻",
+      "funfact": "Kod yazmayı seven bir eczacılık öğrencisi — tıp ve teknoloji dünyalarını birleştiriyor."
+    },
+    "najib": {
+      "role": "Yazılım Ekibi (Görüntü işleme ve Drone görüşü)",
+      "skills": "C, Java, Python. İngilizce, Dari, Türkçe, Hintçe, Özbekçe konuşur.",
+      "funfact": "Hem insanların hem bilgisayarların dillerini öğreniyorum 🤓"
+    },
+    "rabeeah": {
+      "role": "Web Sitesi Mimarı",
+      "skills": "Web geliştirme, UI/UX, Git, problem çözme.",
+      "funfact": "Bir Rubik küpünü bir dakikanın altında çözebilirim — ama bir noktalı virgülü düzeltmek saatler sürer 😅"
+    },
+    "ahmedmulki": {
+      "role": "Elektronik Takım Üyesi",
+      "skills": "Gömülü sistem donanım/yazılım geliştirme.",
+      "funfact": "Mesajlara anında cevap veriyorum 🌚"
+    },
+    "johnricky": {
+      "role": "Elektronik Takım Üyesi",
+      "skills": "Elektronik tasarım, test ve entegrasyon.",
+      "funfact": "Sanatsal ve komik 😌"
+    },
+    "william": {
+      "role": "Elektronik Departmanı Takım Lideri",
+      "skills": "Orta seviye düşük seviyeli programlama.",
+      "funfact": "Her zaman devrelerle deneyler yapıyorum ⚡"
+    },
+    "zawadi": {
+      "role": "Elektronik ve Yazılım Entegrasyonu",
+      "skills": "3 programlama dilinde ve genel elektronik konusunda yetkin.",
+      "funfact": "Kahve aromalı şeyleri seviyorum, ama kahvenin kendisini değil 🫣"
+    },
+    "ahmedosman": {
+      "role": "Kaptan (her takıma yardım eder, şakalar yapar)",
+      "skills": "Mekanik tasarım, kodlama, araştırma, 5 dil konuşur.",
+      "funfact": "Harika bir maymun yüzü yapabilirim ama ırkçı gibi görünmeden benden bunu yapmamı istemene meydan okuyorum 🙂"
+    },
+    "henry": {
+      "role": "Mekanik Takım Üyesi",
+      "skills": "3D modelleme ve test.",
+      "funfact": "Drone kazaları sırasında bile her zaman sakinim 🛠️"
+    },
+    "hilmi": {
+      "role": "Mekanik Tasarım ve Malzeme Seçimi",
+      "skills": "CAD tasarımı, BOM hazırlığı.",
+      "funfact": "Eğer sinirliysem, muhtemelen yöneticim yine benimle uğraşmıştır 😃"
+    },
+    "lujain": {
+      "role": "Koordinatör ve Etkinlik Planlayıcısı",
+      "skills": "Öğretme, organizasyon, yaratıcı el işleri.",
+      "funfact": "Kod yazmam — insanları birbirine bağlarım 🙂‍↔️"
+    }
   },
-  "aboubacar": {
-    "role": "Yazılım Ekibi Lideri",
-    "skills": ".NET Backend Mühendisi, kaputun altındaki sistemleri anlamaya tutkulu.",
-    "funfact": "Futbol oynamayı seviyorum ⚽"
-  },
-  "aine": {
-    "role": "Telemetri Geliştiricisi",
-    "skills": "Araştırma ve kodlama",
-    "funfact": "Eğlenceli bilgi: Dünyanın en iyi futbol takımını destekliyorum — Arsenal 🔴⚪"
-  },
-  "azra": {
-    "role": "Yazılım Geliştirici",
-    "skills": "Sağlık ve teknolojiyi birleştirmek — geleceğin eczacısı ve kod yazarı 💊💻",
-    "funfact": "Kod yazmayı seven bir eczacılık öğrencisi — tıp ve teknoloji dünyalarını birleştiriyor."
-  },
-  "najib": {
-    "role": "Yazılım Ekibi (Görüntü işleme ve Drone görüşü)",
-    "skills": "C, Java, Python. İngilizce, Dari, Türkçe, Hintçe, Özbekçe konuşur.",
-    "funfact": "Hem insanların hem bilgisayarların dillerini öğreniyorum 🤓"
-  },
-  "rabeeah": {
-    "role": "Web Sitesi Mimarı",
-    "skills": "Web geliştirme, UI/UX, Git, problem çözme.",
-    "funfact": "Bir Rubik küpünü bir dakikanın altında çözebilirim — ama bir noktalı virgülü düzeltmek saatler sürer 😅"
-  },
-  "ahmedmulki": {
-    "role": "Elektronik Takım Üyesi",
-    "skills": "Gömülü sistem donanım/yazılım geliştirme.",
-    "funfact": "Mesajlara anında cevap veriyorum 🌚"
-  },
-  "johnricky": {
-    "role": "Elektronik Takım Üyesi",
-    "skills": "Elektronik tasarım, test ve entegrasyon.",
-    "funfact": "Sanatsal ve komik 😌"
-  },
-  "william": {
-    "role": "Elektronik Departmanı Takım Lideri",
-    "skills": "Orta seviye düşük seviyeli programlama.",
-    "funfact": "Her zaman devrelerle deneyler yapıyorum ⚡"
-  },
-  "zawadi": {
-    "role": "Elektronik ve Yazılım Entegrasyonu",
-    "skills": "3 programlama dilinde ve genel elektronik konusunda yetkin.",
-    "funfact": "Kahve aromalı şeyleri seviyorum, ama kahvenin kendisini değil 🫣"
-  },
-  "ahmedosman": {
-    "role": "Kaptan (her takıma yardım eder, şakalar yapar)",
-    "skills": "Mekanik tasarım, kodlama, araştırma, 5 dil konuşur.",
-    "funfact": "Harika bir maymun yüzü yapabilirim ama ırkçı gibi görünmeden benden bunu yapmamı istemene meydan okuyorum 🙂"
-  },
-  "henry": {
-    "role": "Mekanik Takım Üyesi",
-    "skills": "3D modelleme ve test.",
-    "funfact": "Drone kazaları sırasında bile her zaman sakinim 🛠️"
-  },
-  "hilmi": {
-    "role": "Mekanik Tasarım ve Malzeme Seçimi",
-    "skills": "CAD tasarımı, BOM hazırlığı.",
-    "funfact": "Eğer sinirliysem, muhtemelen yöneticim yine benimle uğraşmıştır 😃"
-  },
-  "lujain": {
-    "role": "Koordinatör ve Etkinlik Planlayıcısı",
-    "skills": "Öğretme, organizasyon, yaratıcı el işleri.",
-    "funfact": "Kod yazmam — insanları birbirine bağlarım 🙂‍↔️"
+
+  "projects": {
+    "subtitle": "Burada geliştirmekte olduğumuz ve tamamladığımız droneları; görselleri, teknik özellikleri ve parça listesi (BOM) ile birlikte sergiliyoruz.",
+    "viewDetails": "Detayları Gör →",
+    "comingSoon": "Yakında",
+    "bomTitle": "Parça Listesi (BOM)",
+    "vespasian": {
+      "name": "Vespasian",
+      "summary": "Hafif, dayanıklı ve dengeli uçuş için tasarlanmış bir dört pervaneli drone prototipi.",
+      "description": "Vespasian, karbon fiber kolları ve 3D baskı PLA gövde bileşenleriyle üretilmiş hafif bir drone prototipidir. Kararlılık, modülerlik ve yüksek hassasiyetli performans sunacak şekilde tasarlanmıştır.",
+      "specs": {
+        "weight": "Ağırlık: 970 g veya 0.97 kg",
+        "maxTakeoff": "Maksimum kalkış ağırlığı: 2.5 kg",
+        "flightDuration": "Uçuş süresi (yük yokken): 16.4 dakika",
+        "frameLength": "Gövde uzunluğu: 478.28 mm",
+        "height": "Yükseklik: 157.76 mm"
+      },
+      "bom": {
+        "Kollar": "10/8 3K karbon fiber",
+        "Motor bağlantıları": "Standart PLA plastik",
+        "Kol - Gövde bağlantısı": "Standart PLA plastik",
+        "Gövde": "Standart PLA plastik",
+        "ESC'ler": "20A SimonK",
+        "Motorlar": "EMAX A2212 980KV",
+        "Batarya": "RC Master 2200 mAh 30C Li-po",
+        "Pervaneler": "Plastik 1045",
+        "Uçuş Kontrolcüsü": "ESP32S",
+        "Yazılım (Firmware)": "ESP-FC (RTLopez tarafından) Betaflight uyumlu"
+      }
+    },
+    "drone2": { "name": "Drone 2", "summary": "Yakında" },
+    "drone3": { "name": "Drone 3", "summary": "Yakında", "description": "Belirlenecek" },
+    "drone4": { "name": "Drone 4", "summary": "Yakında" }
   }
-}
 }
