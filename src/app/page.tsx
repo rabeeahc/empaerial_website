@@ -51,7 +51,7 @@ export default function Page() {
       </Section>
 
       <Section className="fade-in" id="projects">
-        <Projects t={t} />
+        <Projects />
       </Section>
 
       <Section className="fade-in" id="sponsors">
