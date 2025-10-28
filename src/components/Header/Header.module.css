@@ -4,19 +4,20 @@
   top: 0;
   left: 0;
   z-index: 100;
-  background: rgba(15, 15, 15, 0);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+ 
+
+  transition: transform 0.4s ease, opacity 0.4s ease, background 0.3s ease;
 }
 
 .header.hide {
   transform: translateY(-120%);
   opacity: 0;
 }
+
 .header.show {
   transform: translateY(0);
   opacity: 1;
 }
-
 
 .container {
   display: flex;
@@ -27,19 +28,22 @@
   margin: 0 auto;
   padding: 14px 0;
 }
+
 .logo {
   display: flex;
   align-items: center;
   margin-left: 60px;
   position: relative;
-  z-index: 350; 
+  z-index: 350;
 }
+
 .logoImage {
   height: 46px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
+
 .logoImage:hover {
   transform: scale(1.05);
 }
@@ -53,11 +57,13 @@
   position: relative;
   z-index: 200;
 }
+
 .navLink {
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease, opacity 0.3s ease;
 }
+
 .navLink:hover {
   opacity: 0.8;
 }
@@ -65,12 +71,15 @@
 .function {
   color: var(--function);
 }
+
 .keyword {
   color: var(--keyword);
 }
+
 .string {
   color: var(--string);
 }
+
 .number {
   color: var(--number);
 }
@@ -83,13 +92,16 @@
   color: rgba(214, 197, 197, 0.7);
   margin-left: 10px;
 }
+
 .langSwitch span {
   cursor: pointer;
   transition: color 0.3s ease;
 }
+
 .langSwitch span:hover {
   color: var(--function);
 }
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -98,10 +110,11 @@
   position: relative;
   z-index: 400;
 }
+
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -109,11 +122,51 @@
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
+
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* === CONTACT INFO (for mobile nav) === */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.contactLink {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.contactLink:hover {
+  color: var(--function);
+  transform: scale(1.05);
+}
+
+/* Optional: make them appear smaller but elegant on large screens if visible */
+@media (min-width: 1251px) {
+  .contactInfo {
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-end;
+    position: absolute;
+    right: 50px;
+    top: 18px;
+  }
+
+  .contactLink {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -147,7 +200,7 @@
     right: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(15, 15, 15, 0.96);
+    background: rgba(10, 16, 24, 0.96);
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 200;
@@ -182,7 +235,49 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.35);
     z-index: -1;
   }
 }
+
+.searchArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  margin-left: 10px;
+}
+
+.searchArea input {
+  width: 180px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  color: #fff;
+  font-family: "Fira Code", monospace;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.searchArea input:focus {
+  width: 220px;
+  outline: none;
+  border-color: var(--function);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .searchArea {
+    width: 100%;
+    justify-content: center;
+    margin: 20px 0 10px 0;
+    padding: 0 20px;
+  }
+
+  .searchArea input {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+

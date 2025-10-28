@@ -16,7 +16,7 @@ export default function Team({ t }) {
           role: t.members.abdullah.role,
           skills: [t.members.abdullah.skills],
           funFact: t.members.abdullah.funfact,
-          photo: "/images/abdullah.jpeg"
+          photo: "/images/abdullah.jpeg",
         },
         {
           name: "Aboubacar Sow",
@@ -26,7 +26,7 @@ export default function Team({ t }) {
           role: t.members.aboubacar.role,
           skills: [t.members.aboubacar.skills],
           funFact: t.members.aboubacar.funfact,
-          photo: "/images/aboubacar.jpeg"
+          photo: "/images/aboubacar.jpeg",
         },
         {
           name: "Aine-Mukama Katureebe",
@@ -36,7 +36,7 @@ export default function Team({ t }) {
           role: t.members.aine.role,
           skills: [t.members.aine.skills],
           funFact: t.members.aine.funfact,
-          photo: "/images/aine.jpeg"
+          photo: "/images/aine.jpeg",
         },
         {
           name: "Azra Dika",
@@ -46,7 +46,7 @@ export default function Team({ t }) {
           role: t.members.azra.role,
           skills: [t.members.azra.skills],
           funFact: t.members.azra.funfact,
-          photo: "/images/azra.jpeg"
+          photo: "/images/azra.jpeg",
         },
         {
           name: "Najibullah Muhammadi",
@@ -56,7 +56,7 @@ export default function Team({ t }) {
           role: t.members.najib.role,
           skills: [t.members.najib.skills],
           funFact: t.members.najib.funfact,
-          photo: "/images/najib.jpeg"
+          photo: "/images/najib.jpeg",
         },
         {
           name: "Rabeeah Chishti",
@@ -66,9 +66,9 @@ export default function Team({ t }) {
           role: t.members.rabeeah.role,
           skills: [t.members.rabeeah.skills],
           funFact: t.members.rabeeah.funfact,
-          photo: "/images/rabeeah.JPG"
-        }
-      ]
+          photo: "/images/rabeeah.JPG",
+        },
+      ],
     },
     {
       team: t.team_electronics_title,
@@ -82,7 +82,7 @@ export default function Team({ t }) {
           role: t.members.ahmedmulki.role,
           skills: [t.members.ahmedmulki.skills],
           funFact: t.members.ahmedmulki.funfact,
-          photo: "/images/ahmedmulki.jpeg"
+          photo: "/images/ahmedmulki.jpeg",
         },
         {
           name: "John Ricky",
@@ -92,7 +92,7 @@ export default function Team({ t }) {
           role: t.members.johnricky.role,
           skills: [t.members.johnricky.skills],
           funFact: t.members.johnricky.funfact,
-          photo: "/images/ricky.jpeg"
+          photo: "/images/ricky.jpeg",
         },
         {
           name: "William Amani",
@@ -102,7 +102,7 @@ export default function Team({ t }) {
           role: t.members.william.role,
           skills: [t.members.william.skills],
           funFact: t.members.william.funfact,
-          photo: "/images/william.jpeg"
+          photo: "/images/william.jpeg",
         },
         {
           name: "Zawadi Wafula",
@@ -112,9 +112,9 @@ export default function Team({ t }) {
           role: t.members.zawadi.role,
           skills: [t.members.zawadi.skills],
           funFact: t.members.zawadi.funfact,
-          photo: "/images/zawadi.jpeg"
-        }
-      ]
+          photo: "/images/zawadi.jpeg",
+        },
+      ],
     },
     {
       team: t.team_mechanical_title,
@@ -128,7 +128,7 @@ export default function Team({ t }) {
           role: t.members.ahmedosman.role,
           skills: [t.members.ahmedosman.skills],
           funFact: t.members.ahmedosman.funfact,
-          photo: "/images/ahmed.jpeg"
+          photo: "/images/ahmed.jpeg",
         },
         {
           name: "Henry Christophe",
@@ -138,7 +138,7 @@ export default function Team({ t }) {
           role: t.members.henry.role,
           skills: [t.members.henry.skills],
           funFact: t.members.henry.funfact,
-          photo: "/images/henry.jpeg"
+          photo: "/images/henry.jpeg",
         },
         {
           name: "Hilmi Kabir",
@@ -148,9 +148,9 @@ export default function Team({ t }) {
           role: t.members.hilmi.role,
           skills: [t.members.hilmi.skills],
           funFact: t.members.hilmi.funfact,
-          photo: "/images/hilmi.jpeg"
-        }
-      ]
+          photo: "/images/hilmi.jpeg",
+        },
+      ],
     },
     {
       team: t.team_coord_title,
@@ -164,52 +164,84 @@ export default function Team({ t }) {
           role: t.members.lujain.role,
           skills: [t.members.lujain.skills],
           funFact: t.members.lujain.funfact,
-          photo: "/images/lujain.jpeg"
-        }
-      ]
-    }
+          photo: "/images/lujain.jpeg",
+        },
+      ],
+    },
   ];
 
   return (
-    <section className={styles.teamSection}>
-      <h2 className={styles.teamTitle}>{t.team_title}</h2>
+    <section className={styles.teamSection} aria-labelledby="team-title">
+      <h2 id="team-title" className={styles.teamTitle}>
+        {t.team_title}
+      </h2>
       <p className={styles.teamSubtitle}>{t.team_subtitle}</p>
 
-      <div className={styles.cardContainer}>
-        {teamData.map((group, index) => (
-          <div key={index} className={styles.bigCard}>
-            <div className={styles.cardInner}>
-              <div className={styles.cardFront}>
-                <h3 className={styles.cardTitle}>{group.team}</h3>
-                <p className={styles.cardDescription}>{group.description}</p>
-              </div>
-              <div className={styles.cardBack}>
-                <h3>{t.team_members}</h3>
-                <ul className={styles.membersList}>
-                  {group.members.map((member, i) => (
-                    <li key={i} className={styles.memberItem}>
-                      <a href={member.url} target="_blank" rel="noopener noreferrer" className={styles.memberLink}>
-                        {member.name}
-                      </a>
-                      <div className={styles.memberTooltip}>
-                        <img src={member.photo} alt={member.name} className={styles.memberPhoto} />
-                        <div className={styles.tooltipContent}>
-                          <p><span className={styles.label}>{t.team_age}</span> {member.age}</p>
-                          <p><span className={styles.label}>{t.team_country}</span> {member.country}</p>
-                          <p><span className={styles.label}>{t.team_role}</span> {member.role}</p>
-                          <p><span className={styles.label}>{t.team_skills}</span> {member.skills.join(", ")}</p>
-                          <p style={{ marginTop: '10px', fontStyle: 'italic', opacity: 0.8 }}>
-                            <strong className={styles.function}>{t.team_funfact}</strong> {`"${member.funFact}"`}
-                          </p>
+      <div className={styles.carouselWrapper}>
+      
+
+        <div className={styles.cardContainer}>
+          {teamData.map((group, index) => (
+            <article
+              key={index}
+              className={styles.bigCard}
+              aria-label={`${group.team} team`}
+            >
+              <div className={styles.cardInner}>
+                <div className={styles.cardFront}>
+                  <h3 className={styles.cardTitle}>{group.team}</h3>
+                  <p className={styles.cardDescription}>{group.description}</p>
+                </div>
+
+                <div className={styles.cardBack}>
+                  <h3>{t.team_members}</h3>
+                  <ul className={styles.membersList}>
+                    {group.members.map((member, i) => (
+                      <li key={i} className={styles.memberItem}>
+                        <a
+                          href={member.url}
+                         rel="noopener noreferrer"
+                          className={styles.memberLink}
+                        >
+                          {member.name}
+                        </a>
+                        <div className={styles.memberTooltip}>
+                          <img
+                            src={member.photo}
+                            alt={`${member.name}, ${member.role} from ${member.country}`}
+                            className={styles.memberPhoto}
+                          />
+                          <div className={styles.tooltipContent}>
+                            <p>
+                              <strong>{t.team_age}:</strong> {member.age}
+                            </p>
+                            <p>
+                              <strong>{t.team_country}:</strong>{" "}
+                              {member.country}
+                            </p>
+                            <p>
+                              <strong>{t.team_role}:</strong> {member.role}
+                            </p>
+                            <p>
+                              <strong>{t.team_skills}:</strong>{" "}
+                              {member.skills.join(", ")}
+                            </p>
+                            <p>
+                              <strong>{t.team_funfact}:</strong> "
+                              {member.funFact}"
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            </article>
+          ))}
+        </div>
+
+       
       </div>
     </section>
   );

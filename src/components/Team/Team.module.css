@@ -22,14 +22,12 @@
   font-style: italic;
 }
 
-
 .cardContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
 }
-
 
 .bigCard {
   width: 300px;
@@ -43,17 +41,18 @@
   position: relative;
   border-radius: 20px;
   transform-style: preserve-3d;
-  transition: transform 0.7s ease-in-out;
+  transition: transform 0.7s ease-in-out, box-shadow 0.35s ease;
 }
 
 .bigCard:hover .cardInner {
   transform: rotateY(180deg);
+  box-shadow: 0 0 28px rgba(120, 200, 255, 0.22);
 }
 
-.cardFront, .cardBack {
+.cardFront,
+.cardBack {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   border-radius: 20px;
   backface-visibility: hidden;
   display: flex;
@@ -61,19 +60,21 @@
   justify-content: center;
   align-items: center;
   padding: 25px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .cardFront {
-  background: linear-gradient(135deg, #001418, #048d9c);
+  background: linear-gradient(135deg, #0b1a28, #0a3848);
   color: #f8f8f2;
   text-align: center;
+  border: 1px solid rgba(120, 200, 255, 0.12);
 }
 
 .cardBack {
-  background: linear-gradient(135deg, #111, #222);
+  background: linear-gradient(135deg, #0e141b, #1b2734);
   color: var(--text);
   transform: rotateY(180deg);
+  border: 1px solid rgba(120, 200, 255, 0.12);
 }
 
 .cardTitle {
@@ -110,7 +111,7 @@
 .memberLink {
   color: var(--string);
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.25s;
 }
 
 .memberLink:hover {
@@ -123,7 +124,7 @@
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(30,30,30,0.97);
+  background: rgba(20, 26, 36, 0.97);
   color: #f8f8f2;
   padding: 20px;
   border-radius: 12px;
@@ -132,9 +133,10 @@
   text-align: left;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   z-index: 20;
+  border: 1px solid rgba(120, 200, 255, 0.12);
 }
 
 .memberItem:hover .memberTooltip,
@@ -143,6 +145,7 @@
   pointer-events: auto;
   transform: translateX(-50%) translateY(-10px);
 }
+
 .memberTooltip::after {
   content: '';
   position: absolute;
@@ -151,8 +154,9 @@
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
-  border-color: rgba(30,30,30,0.97) transparent transparent transparent;
+  border-color: rgba(20, 26, 36, 0.97) transparent transparent transparent;
 }
+
 .memberPhoto {
   width: 100%;
   height: auto;
@@ -160,6 +164,7 @@
   margin-bottom: 10px;
   object-fit: cover;
 }
+
 .skillTag {
   display: inline-block;
   background: var(--keyword);
@@ -169,32 +174,21 @@
   border-radius: 4px;
   margin: 2px 2px 2px 0;
 }
-.teamButton {
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  color: var(--bg);
-  background: var(--keyword);
-  transition: all 0.3s ease;
-}
 
-.teamButton:hover {
-  background: var(--variable);
-  color: var(--bg);
-  transform: scale(1.05);
-}
-.variable{
+
+
+.variable {
   color: var(--variable);
 }
-.string{
+
+.string {
   color: var(--string);
 }
-.number{
-  color: var(--number)
+
+.number {
+  color: var(--number);
 }
-.function{
-  color: var(--function)
+
+.function {
+  color: var(--function);
 }

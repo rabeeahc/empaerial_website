@@ -1,6 +1,6 @@
 {
   "nav_home": "Home()",
-  "nav_team": "Team()",
+  "nav_blogs": "Blogs()",
   "nav_projects": "Projects()",
   "nav_contact": "Contact()",
 
@@ -13,8 +13,13 @@
   "sponsors_title": "Our Sponsors",
 
   "contact_title": "Contact() {",
-  "contact_text": "Email us at contact@empaerial.com or follow us on social media.",
+  "contact_text": "Send us an email at empaerial.uav@gmail.com or reach us at +90 531 496 69 47.",
   "contact_end": "}",
+
+  "contact_email_label": "Send us an email at:",
+  "contact_email": "empaerial.uav@gmail.com",
+  "contact_number_label": "or reach us at:",
+  "contact_number": "+90 531 496 69 47",
 
   "footer_follow": "Follow us on social media",
   "footer_instagram": "Instagram()",
@@ -45,7 +50,7 @@
     "abdullah": {
       "role": "Software Team (Image Processing & Drone Vision).",
       "skills": "Deep learning, Computer Vision. Languages: Dari, English, Turkish.",
-      "funfact": "I love training both neural networks and muscles — AI by day, gym by night 💪🤖"
+      "funfact": "I love training both neural networks and muscles. AI by day, gym by night 💪🤖"
     },
     "aboubacar": {
       "role": "Software Team Leader",
@@ -55,12 +60,12 @@
     "aine": {
       "role": "Working on telemetry",
       "skills": "Research & coding",
-      "funfact": "Fun fact: I support the best football team in the world — Arsenal 🔴⚪"
+      "funfact": "Fun fact: I support the best football team in the world: Arsenal 🔴⚪"
     },
     "azra": {
       "role": "Software Developer",
       "skills": "Hard to list, easier to witness. Just wait until you see me in action.",
-      "funfact": "I’m a 3rd-year pharmacy student, but that doesn’t stop me from diving into technology. The future of healthcare is digital — I want to blend both worlds through code. 💊💻"
+      "funfact": "I’m a 3rd-year pharmacy student, but that doesn’t stop me from diving into technology. The future of healthcare is digital, I want to blend both worlds through code. 💊💻"
     },
     "najib": {
       "role": "Software Team (Image Processing & Drone Vision)",
@@ -70,7 +75,7 @@
     "rabeeah": {
       "role": "Website Architect",
       "skills": "Experienced in web development, UI/UX design, problem-solving, and version control with Git.",
-      "funfact": "Can solve a Rubik's cube in under a minute — ironic since it takes me 3 hours to fix a missing semicolon."
+      "funfact": "Can solve a Rubik's cube in under a minute, ironic since it takes me 3 hours to fix a missing semicolon."
     },
     "ahmedmulki": {
       "role": "Electronics Team Member",
@@ -95,7 +100,7 @@
     "ahmedosman": {
       "role": "Captain (no official role, hangs with everyone and makes jokes).",
       "skills": "Mechanical design, intermediate coding skills, excellent online research, speaks 5 languages and counting.",
-      "funfact": "I can make a great monkey face — but don’t dare me to do it 🙂"
+      "funfact": "I can make a great monkey face but I dare you to ask me to do it without sounding racist.🙂"
     },
     "henry": {
       "role": "Mechanical Team Member",
@@ -110,44 +115,59 @@
     "lujain": {
       "role": "Coordinating team support operations and overseeing planning and execution of events.",
       "skills": "Experienced in teaching, enjoys expressing creativity through handcrafts.",
-      "funfact": "I don’t code — I connect people 🙂‍↔️"
+      "funfact": "I don’t code, I connect people 🙂‍↔️"
     }
   },
 
   "projects": {
-    "title": "Our Projects",
-    "subtitle": "Here we showcase the drones we are building and those completed, including images, specs, and BOM.",
-    "viewDetails": "View Details →",
-    "comingSoon": "Coming Soon",
-    "bomTitle": "BOM",
-
-    "vespasian": {
-      "name": "Vespasian",
-      "summary": "Lightweight quadcopter prototype for stable flight and durability.",
-      "description": "Vespasian is a lightweight quadcopter prototype featuring carbon fiber arms and 3D-printed PLA body components, designed for stability, modularity, and precision performance.",
-      "specs": {
-        "weight": "Weight: 970 g or 0.97 kg",
-        "maxTakeoff": "Max takeoff weight: 2.5 kg",
-        "flightDuration": "Flight duration (no load): 16.4 minutes",
-        "frameLength": "Frame length: 478.28 mm",
-        "height": "Height: 157.76 mm"
-      },
-      "bom": {
-        "Arms": "10/8 3K carbon fiber",
-        "Motor mounts": "Standard PLA Plastic",
-        "Arm to Chassis connection": "Standard PLA Plastic",
-        "Chassis": "Standard PLA Plastic",
-        "ESCs": "20A SimonK",
-        "Motors": "EMAX A2212 980KV",
-        "Battery": "RC Master 2200 mAh 30C Li-po",
-        "Props": "Plastic 1045",
-        "Flight Controller": "ESP32S",
-        "Firmware": "ESP-FC (by RTLopez) Betaflight compatible"
-      }
+  "title": "Our Projects",
+  "subtitle": "Here we showcase the drones we are building and those completed, including images, specs, and BOM.",
+  "comingSoon": "Coming Soon",
+  "viewDetails": "View Details",
+  "bom": "BOM",
+  "vespasian": {
+    "summary": "Lightweight quadcopter prototype for stable flight and durability.",
+    "description": "Vespasian is a lightweight quadcopter prototype featuring carbon fiber arms and 3D printed PLA body components, designed for stability, modularity, and precision performance.",
+    "specs": {
+      "weight": "Weight",
+      "max_takeoff": "Max takeoff weight",
+      "flight_duration": "Flight duration (no load)",
+      "frame_length": "Frame length",
+      "height": "Height"
     },
-
-    "drone2": { "name": "Drone 2", "summary": "Coming Soon" },
-    "drone3": { "name": "Drone 3", "summary": "Coming Soon", "description": "TBD" },
-    "drone4": { "name": "Drone 4", "summary": "Coming Soon" }
-  }
+    "bom": {
+      "arms": "Arms",
+      "motor_mounts": "Motor mounts",
+      "arm_to_chassis": "Arm to Chassis connection",
+      "chassis": "Chassis",
+      "escs": "ESCs",
+      "motors": "Motors",
+      "battery": "Battery",
+      "props": "Props",
+      "controller": "Flight Controller",
+      "firmware": "Firmware"
+    }
+  },
+  "drone2": { "summary": "Coming Soon" },
+  "drone3": { "summary": "Coming Soon" },
+  "drone4": { "summary": "Coming Soon" }
+},
+"vespasian": {
+  "subtitle": "A modular, lightweight quadcopter engineered for precision and endurance.",
+  "specifications": "Specifications",
+  "specs": {
+    "weight": "Weight",
+    "max_takeoff": "Max Takeoff Weight",
+    "flight_duration": "Flight Duration",
+    "frame_length": "Frame Length",
+    "height": "Height"
+  },
+  "materials": "Materials",
+  "about": "About the Project",
+  "about_text": "Details on this project will be uploaded soon.",
+  "contact_title": "Interested in Vespasian?",
+  "contact_text": "For collaborations, sponsorships, or limited-batch availability, reach out to us.",
+  "email_us": "Email Us",
+  "contact_section": "Contact Section →"
+}
 }

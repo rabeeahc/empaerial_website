@@ -1,6 +1,6 @@
 {
   "nav_home": "AnaSayfa()",
-  "nav_team": "Takım()",
+  "nav_blogs": "Bloglar()",
   "nav_projects": "Projeler()",
   "nav_contact": "İletişim()",
 
@@ -13,8 +13,16 @@
   "sponsors_title": "Sponsorlarımız",
 
   "contact_title": "İletişim() {",
-  "contact_text": "Bize contact@empaerial.com adresinden e-posta gönderebilir veya sosyal medyada bizi takip edebilirsiniz.",
+  "contact_text": "Bize şu adresten e-posta gönderin: empaerial.uav@gmail.com veya +90 531 496 69 47 numaradan bizimle iletişime geçebilirsiniz.",
   "contact_end": "}",
+
+  "contact_email_label": "Bize şu adresten e-posta gönderebilirsiniz:",
+  "contact_email": "empaerial.uav@gmail.com",
+  "contact_number_label": "veya şu numaradan bizimle iletişime geçebilirsiniz:",
+  "contact_number": "+90 531 496 69 47",
+
+
+
   "footer_follow": "Bizi sosyal medyada takip edin",
   "footer_instagram": "Instagram()",
   "footer_linkedin": "LinkedIn()",
@@ -44,7 +52,7 @@
     "abdullah": {
       "role": "Yazılım Ekibi (Görüntü İşleme ve Drone Görüşü)",
       "skills": "Derin öğrenme, Bilgisayarlı Görü, Diller: Dari, İngilizce, Türkçe.",
-      "funfact": "Hem sinir ağlarını hem kasları eğitmeyi seviyorum — gündüz yapay zeka, gece spor salonu 💪🤖"
+      "funfact": "Hem sinir ağlarını hem kasları eğitmeyi seviyorum. Gündüz yapay zeka, gece spor salonu 💪🤖"
     },
     "aboubacar": {
       "role": "Yazılım Ekibi Lideri",
@@ -54,12 +62,12 @@
     "aine": {
       "role": "Telemetri Geliştiricisi",
       "skills": "Araştırma ve kodlama",
-      "funfact": "Eğlenceli bilgi: Dünyanın en iyi futbol takımını destekliyorum — Arsenal 🔴⚪"
+      "funfact": "Eğlenceli bilgi: Dünyanın en iyi futbol takımını destekliyorum: Arsenal 🔴⚪"
     },
     "azra": {
       "role": "Yazılım Geliştirici",
       "skills": "Sağlık ve teknolojiyi birleştirmek — geleceğin eczacısı ve kod yazarı 💊💻",
-      "funfact": "Kod yazmayı seven bir eczacılık öğrencisi — tıp ve teknoloji dünyalarını birleştiriyor."
+      "funfact": "Kod yazmayı seven bir eczacılık öğrencisi, tıp ve teknoloji dünyalarını birleştiriyor."
     },
     "najib": {
       "role": "Yazılım Ekibi (Görüntü işleme ve Drone görüşü)",
@@ -69,7 +77,7 @@
     "rabeeah": {
       "role": "Web Sitesi Mimarı",
       "skills": "Web geliştirme, UI/UX, Git, problem çözme.",
-      "funfact": "Bir Rubik küpünü bir dakikanın altında çözebilirim — ama bir noktalı virgülü düzeltmek saatler sürer 😅"
+      "funfact": "Bir Rubik küpünü bir dakikanın altında çözebilirim ama bir noktalı virgülü düzeltmek saatler sürer 😅"
     },
     "ahmedmulki": {
       "role": "Elektronik Takım Üyesi",
@@ -109,41 +117,59 @@
     "lujain": {
       "role": "Koordinatör ve Etkinlik Planlayıcısı",
       "skills": "Öğretme, organizasyon, yaratıcı el işleri.",
-      "funfact": "Kod yazmam — insanları birbirine bağlarım 🙂‍↔️"
+      "funfact": "Kod yazmam, insanları birbirine bağlarım 🙂‍↔️"
     }
   },
 
   "projects": {
-    "subtitle": "Burada geliştirmekte olduğumuz ve tamamladığımız droneları; görselleri, teknik özellikleri ve parça listesi (BOM) ile birlikte sergiliyoruz.",
-    "viewDetails": "Detayları Gör →",
-    "comingSoon": "Yakında",
-    "bomTitle": "Parça Listesi (BOM)",
-    "vespasian": {
-      "name": "Vespasian",
-      "summary": "Hafif, dayanıklı ve dengeli uçuş için tasarlanmış bir dört pervaneli drone prototipi.",
-      "description": "Vespasian, karbon fiber kolları ve 3D baskı PLA gövde bileşenleriyle üretilmiş hafif bir drone prototipidir. Kararlılık, modülerlik ve yüksek hassasiyetli performans sunacak şekilde tasarlanmıştır.",
-      "specs": {
-        "weight": "Ağırlık: 970 g veya 0.97 kg",
-        "maxTakeoff": "Maksimum kalkış ağırlığı: 2.5 kg",
-        "flightDuration": "Uçuş süresi (yük yokken): 16.4 dakika",
-        "frameLength": "Gövde uzunluğu: 478.28 mm",
-        "height": "Yükseklik: 157.76 mm"
-      },
-      "bom": {
-        "Kollar": "10/8 3K karbon fiber",
-        "Motor bağlantıları": "Standart PLA plastik",
-        "Kol - Gövde bağlantısı": "Standart PLA plastik",
-        "Gövde": "Standart PLA plastik",
-        "ESC'ler": "20A SimonK",
-        "Motorlar": "EMAX A2212 980KV",
-        "Batarya": "RC Master 2200 mAh 30C Li-po",
-        "Pervaneler": "Plastik 1045",
-        "Uçuş Kontrolcüsü": "ESP32S",
-        "Yazılım (Firmware)": "ESP-FC (RTLopez tarafından) Betaflight uyumlu"
-      }
+  "title": "Projelerimiz",
+  "subtitle": "Yapmakta olduğumuz ve tamamladığımız insansız hava araçlarını görselleri, özellikleri ve malzeme listeleriyle birlikte burada sergiliyoruz.",
+  "comingSoon": "Yakında geliyor",
+  "viewDetails": "Detayları Görüntüle",
+  "bom": "Malzeme Listesi",
+  "vespasian": {
+    "summary": "Hafif, dengeli uçuş ve dayanıklılık için tasarlanmış dört pervaneli prototip.",
+    "description": "Vespasian, karbon fiber kollar ve 3D baskılı PLA gövde bileşenleriyle tasarlanmış, stabilite, modülerlik ve hassas performans sağlayan hafif bir dört pervaneli prototiptir.",
+    "specs": {
+      "weight": "Ağırlık",
+      "max_takeoff": "Azami kalkış ağırlığı",
+      "flight_duration": "Uçuş süresi (yük olmadan)",
+      "frame_length": "Gövde uzunluğu",
+      "height": "Yükseklik"
     },
-    "drone2": { "name": "Drone 2", "summary": "Yakında" },
-    "drone3": { "name": "Drone 3", "summary": "Yakında", "description": "Belirlenecek" },
-    "drone4": { "name": "Drone 4", "summary": "Yakında" }
-  }
+    "bom": {
+      "arms": "Kollar",
+      "motor_mounts": "Motor yuvaları",
+      "arm_to_chassis": "Kol-Gövde bağlantısı",
+      "chassis": "Gövde",
+      "escs": "ESC'ler",
+      "motors": "Motorlar",
+      "battery": "Batarya",
+      "props": "Pervaneler",
+      "controller": "Uçuş kontrolcüsü",
+      "firmware": "Yazılım"
+    }
+  },
+  "drone2": { "summary": "Yakında geliyor" },
+  "drone3": { "summary": "Yakında geliyor" },
+  "drone4": { "summary": "Yakında geliyor" }
+},
+"vespasian": {
+  "subtitle": "Hassasiyet ve dayanıklılık için tasarlanmış modüler, hafif bir dört pervaneli hava aracı.",
+  "specifications": "Teknik Özellikler",
+  "specs": {
+    "weight": "Ağırlık",
+    "max_takeoff": "Azami Kalkış Ağırlığı",
+    "flight_duration": "Uçuş Süresi",
+    "frame_length": "Gövde Uzunluğu",
+    "height": "Yükseklik"
+  },
+  "materials": "Malzemeler",
+  "about": "Proje Hakkında",
+  "about_text": "Bu projeye ilişkin detaylar yakında yüklenecektir.",
+  "contact_title": "Vespasian ile ilgileniyor musunuz?",
+  "contact_text": "İş birlikleri, sponsorluklar veya sınırlı üretim için bizimle iletişime geçin.",
+  "email_us": "Bize E-posta Gönderin",
+  "contact_section": "İletişim Bölümü →"
+}
 }
