@@ -2,12 +2,13 @@
   "name": "empaerial-website",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "prepare": "husky install"
-  },
+ "scripts": {
+  "dev": "next dev --turbopack",
+  "build": "next build --turbopack && next-sitemap",
+  "start": "next start",
+  "prepare": "husky install"
+},
+
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dialog": "^1.1.15",
@@ -37,8 +38,6 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["prettier --write"]
   }
 }
