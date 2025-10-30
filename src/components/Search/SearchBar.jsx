@@ -8,15 +8,15 @@ export default function SearchBar({ data = [] }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
   const inputRef = useRef(null);
+  const isMac = navigator.platform.toUpperCase().includes('MAC');
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return data.filter((item) =>
-      item.title.toLowerCase().includes(q)
-    );
+    return data.filter((item) => item.title.toLowerCase().includes(q));
   }, [query, data]);
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     const onDocClick = (e) => {
       if (!wrapRef.current) return;
@@ -26,28 +26,22 @@ export default function SearchBar({ data = [] }) {
     return () => document.removeEventListener('click', onDocClick);
   }, []);
 
+  // Keyboard shortcut: Ctrl+K / Cmd+K / Slash / Escape
   useEffect(() => {
     const handleShortcut = (e) => {
-      const isMac = navigator.platform.toUpperCase().includes('MAC');
-
-      // Ctrl+K or Cmd+K to focus
       if (
         (isMac && e.metaKey && e.key.toLowerCase() === 'k') ||
         (!isMac && e.ctrlKey && e.key.toLowerCase() === 'k')
       ) {
         e.preventDefault();
         inputRef.current?.focus();
-        return;
       }
 
-      // Slash (/) to focus
       if (e.key === '/' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
         inputRef.current?.focus();
-        return;
       }
 
-      // Escape to close
       if (e.key === 'Escape') {
         inputRef.current?.blur();
         setOpen(false);
@@ -56,7 +50,7 @@ export default function SearchBar({ data = [] }) {
 
     window.addEventListener('keydown', handleShortcut);
     return () => window.removeEventListener('keydown', handleShortcut);
-  }, []);
+  }, [isMac]);
 
   const goTo = (link) => {
     if (!link) return;
@@ -93,23 +87,20 @@ export default function SearchBar({ data = [] }) {
 
   return (
     <div className={styles.searchWrap} ref={wrapRef}>
-      <div className={styles.inputContainer}>
-        <input
-          ref={inputRef}
-          className={`${styles.input} searchInput`}
-          type="search"
-          placeholder="Search"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setOpen(true);
-          }}
-          onFocus={() => query && setOpen(true)}
-          onKeyDown={handleKeyDown}
-          aria-label="Search site"
-        />
-        <span className={styles.shortcut}>Ctrl + K</span>
-      </div>
+      <input
+        ref={inputRef}
+        className={styles.input}
+        type="search"
+        placeholder="Search"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => query && setOpen(true)}
+        onKeyDown={handleKeyDown}
+        aria-label="Search site"
+      />
 
       {open && results.length > 0 && (
         <ul className={styles.dropdown} role="listbox">
