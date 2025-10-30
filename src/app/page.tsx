@@ -59,7 +59,7 @@ export default function Page() {
           <Sponsors t={t} />
         </Section>
 
-        {/* 📨 CONTACT SECTION */}
+        {}
         <Section className="fade-in" id="contact" aria-labelledby="contact-title">
           <h2 id="contact-title" className={styles.title}>
             <span className={styles.function}>{t.contact_title}</span>
@@ -75,11 +75,14 @@ export default function Page() {
   </a>{" "}
   {t.contact_number_label}{" "}
   <a
-    href={`tel:${t.contact_number.replace(/\s+/g, '')}`}
-    className={styles.contactLink}
-  >
-    {t.contact_number}
-  </a>.
+  href={`https://wa.me/${t.contact_number.replace(/\D/g, '')}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className={styles.contactLink}
+>
+  {t.contact_number}
+</a>
+
 </p>
 
 <h2 className={styles.title}>{t.contact_end}</h2>

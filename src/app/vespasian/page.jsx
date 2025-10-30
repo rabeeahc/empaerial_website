@@ -118,7 +118,7 @@ export default function VespasianPage() {
                 "For collaborations, sponsorships, or limited-batch availability, reach out to us."}
             </p>
             <div className={styles.contactActions}>
-              <a href="mailto:contact@empaerial.com" className={styles.primaryBtn}>
+              <a href="mailto:empaerial.uav@gmail.com" className={styles.primaryBtn}>
                 {t.vespasian?.email_us || "Email Us"}
               </a>
               <a href="/#contact" className={styles.secondaryBtn}>
