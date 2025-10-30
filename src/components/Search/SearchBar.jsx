@@ -28,11 +28,26 @@ export default function SearchBar({ data = [] }) {
 
   useEffect(() => {
     const handleShortcut = (e) => {
+      const isMac = navigator.platform.toUpperCase().includes('MAC');
+
+      // Ctrl+K or Cmd+K to focus
+      if (
+        (isMac && e.metaKey && e.key.toLowerCase() === 'k') ||
+        (!isMac && e.ctrlKey && e.key.toLowerCase() === 'k')
+      ) {
+        e.preventDefault();
+        inputRef.current?.focus();
+        return;
+      }
+
+      // Slash (/) to focus
       if (e.key === '/' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
         inputRef.current?.focus();
+        return;
       }
 
+      // Escape to close
       if (e.key === 'Escape') {
         inputRef.current?.blur();
         setOpen(false);
@@ -78,20 +93,23 @@ export default function SearchBar({ data = [] }) {
 
   return (
     <div className={styles.searchWrap} ref={wrapRef}>
-      <input
-        ref={inputRef}
-        className={`${styles.input} searchInput`}
-        type="search"
-        placeholder="Search"
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          setOpen(true);
-        }}
-        onFocus={() => query && setOpen(true)}
-        onKeyDown={handleKeyDown}
-        aria-label="Search site"
-      />
+      <div className={styles.inputContainer}>
+        <input
+          ref={inputRef}
+          className={`${styles.input} searchInput`}
+          type="search"
+          placeholder="Search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => query && setOpen(true)}
+          onKeyDown={handleKeyDown}
+          aria-label="Search site"
+        />
+        <span className={styles.shortcut}>Ctrl + K</span>
+      </div>
 
       {open && results.length > 0 && (
         <ul className={styles.dropdown} role="listbox">
