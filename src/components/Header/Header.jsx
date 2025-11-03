@@ -52,13 +52,11 @@ const Header = ({ t, lang, setLang }) => {
     e.preventDefault();
     closeMenu();
 
-    // Blog page link (open as a page, not scroll)
     if (id === 'blogs') {
       window.location.href = '/blogs';
       return;
     }
 
-    // Scroll smoothly if on homepage
     if (window.location.pathname !== '/') {
       window.location.href = `/#${id}`;
     } else {

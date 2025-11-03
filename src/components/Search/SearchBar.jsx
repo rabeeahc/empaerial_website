@@ -8,15 +8,46 @@ export default function SearchBar({ data = [] }) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
   const inputRef = useRef(null);
-  const isMac = navigator.platform.toUpperCase().includes('MAC');
+  const isMac =
+    typeof window !== 'undefined' &&
+    navigator.platform.toUpperCase().includes('MAC');
+
+
+  const teamMembers = [
+    { title: 'Rabeeah Chishti', link: 'https://www.linkedin.com/in/rabeeah-chishti/', type: 'linkedin' },
+     { title: 'Abdullah Amin', link: 'https://www.linkedin.com/in/abdullah-milad', type: 'linkedin' },
+    { title: 'Najibullah Muhammadi', link: 'https://www.linkedin.com/in/najib-muhammadi-/', type: 'linkedin' },
+    { title: 'John Ricky', link: 'https://www.linkedin.com/in/john-ricky-433367335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', type: 'linkedin' },
+    { title: 'Ahmed Mulki', link: 'https://www.linkedin.com/in/ahmed-mulki-393a3b389/', type: 'linkedin' },
+    { title: 'Azra Dika', link: 'https://www.linkedin.com/in/f-azra-dika-2786011b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', type: 'linkedin' },
+    { title: 'Aine-Mukama Katureebe', link: 'https://www.linkedin.com/in/aine-mukama-rwankurukumbi-katureebe-083939264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', type: 'linkedin' },
+    { title: 'William Amani', link: 'https://linkedin.com/in/william-amani-363ba12a5', type: 'linkedin' },
+    { title: 'Zawadi Wafula', link: 'https://www.linkedin.com/in/zawadi-wafula-956493265/', type: 'linkedin' },
+    { title: 'Ahmed Osman Mahamoud', link: 'https://www.linkedin.com/in/aom99/', type: 'linkedin' },
+    { title: 'Henry Christophe', link: 'https://www.linkedin.com/in/henry-christophe-ndahirwa-b80015288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', type: 'linkedin' },
+    { title: 'Hilmi Kabir', link: 'https://www.linkedin.com/in/hilmikabir', type: 'linkedin' },
+    { title: 'Lujain Nofal', link: 'https://www.linkedin.com/in/lujain-nofal-33a708387?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', type: 'linkedin' },
+    { title: 'Aboubacar Sow', link: 'https://www.linkedin.com/in/aboubacar-sow-853a7b25b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', type: 'linkedin' },
+  ];
+
+
+  const staticProjects = [
+    { title: 'Vespasian', link: '/vespasian', type: 'project' },
+  ];
+
+
+  const fullData = [...teamMembers, ...staticProjects, ...data];
+
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return data.filter((item) => item.title.toLowerCase().includes(q));
-  }, [query, data]);
+    return fullData.filter((item) =>
+      item.title.toLowerCase().includes(q)
+    );
+  }, [query, fullData]);
 
-  // Close dropdown when clicking outside
+ 
   useEffect(() => {
     const onDocClick = (e) => {
       if (!wrapRef.current) return;
@@ -26,7 +57,7 @@ export default function SearchBar({ data = [] }) {
     return () => document.removeEventListener('click', onDocClick);
   }, []);
 
-  // Keyboard shortcut: Ctrl+K / Cmd+K / Slash / Escape
+  
   useEffect(() => {
     const handleShortcut = (e) => {
       if (
@@ -36,12 +67,10 @@ export default function SearchBar({ data = [] }) {
         e.preventDefault();
         inputRef.current?.focus();
       }
-
       if (e.key === '/' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
         inputRef.current?.focus();
       }
-
       if (e.key === 'Escape') {
         inputRef.current?.blur();
         setOpen(false);
@@ -52,34 +81,28 @@ export default function SearchBar({ data = [] }) {
     return () => window.removeEventListener('keydown', handleShortcut);
   }, [isMac]);
 
-  const goTo = (link) => {
-    if (!link) return;
-    const id = link.startsWith('#') ? link.slice(1) : link;
 
-    if (window.location.pathname !== '/') {
-      window.location.href = `/${link}`;
-    } else {
-      const el = document.getElementById(id);
-      if (el) {
-        history.pushState(null, '', link);
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
+  const goTo = (link, type) => {
+    if (!link) return;
+    window.location.href = link; 
   };
 
+ 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && results.length > 0) {
       e.preventDefault();
-      goTo(results[0].link);
+      const item = results[0];
+      goTo(item.link, item.type);
       setQuery('');
       setOpen(false);
       inputRef.current?.blur();
     }
   };
 
+
   const handleSelect = (e, item) => {
     e.preventDefault();
-    goTo(item.link);
+    goTo(item.link, item.type);
     setQuery('');
     setOpen(false);
     inputRef.current?.blur();
@@ -106,13 +129,20 @@ export default function SearchBar({ data = [] }) {
         <ul className={styles.dropdown} role="listbox">
           {results.map((item, idx) => (
             <li key={idx}>
-              <a
-                href={item.link}
+              <button
+                type="button"
                 className={styles.item}
-                onMouseDown={(e) => handleSelect(e, item)}
+                onClick={(e) => handleSelect(e, item)}
               >
-                {item.title}
-              </a>
+                <span>{item.title}</span>
+                <span className={styles.badge}>
+                  {item.type === 'linkedin'
+                    ? '👥 Team'
+                    : item.type === 'project'
+                    ? '🚁 Project'
+                    : '📄 Page'}
+                </span>
+              </button>
             </li>
           ))}
         </ul>

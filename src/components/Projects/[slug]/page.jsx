@@ -40,7 +40,7 @@ export default function ProjectDetails() {
       fontFamily: 'Arial, sans-serif',
     }}>
       
-      {/* LEFT SIDE - Drone Images */}
+      {}
       <div style={{ flex: '1', maxWidth: '45%', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <img
           src={project.image_url || '/images/default-drone.png'}
@@ -53,7 +53,7 @@ export default function ProjectDetails() {
         />
       </div>
 
-      {/* RIGHT SIDE - Drone Info */}
+      {}
       <div style={{ flex: '1.2', maxWidth: '50%' }}>
         <h1 style={{ fontSize: '2.8rem', color: '#00e6a8', marginBottom: '0.8rem' }}>
           {project.name}

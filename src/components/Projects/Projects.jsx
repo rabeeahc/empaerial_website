@@ -13,13 +13,25 @@ export default function Projects({ t }) {
       try {
         const res = await fetch("/api/projects", { cache: "no-store" });
         const data = await res.json();
-        setProjects(data);
+
+    
+        if (Array.isArray(data)) {
+          setProjects(data);
+        } else if (data && typeof data === "object" && Array.isArray(data.projects)) {
+          
+          setProjects(data.projects);
+        } else {
+          console.warn("⚠️ Unexpected API format:", data);
+          setProjects([]);
+        }
       } catch (err) {
-        console.error("Error fetching projects:", err);
+        console.error("❌ Error fetching projects:", err);
+        setProjects([]);
       } finally {
         setLoading(false);
       }
     };
+
     fetchProjects();
   }, []);
 
@@ -43,7 +55,7 @@ export default function Projects({ t }) {
       </div>
 
       <div className={styles.projectRow}>
-        {projects.length === 0 ? (
+        {!Array.isArray(projects) || projects.length === 0 ? (
           <p style={{ textAlign: "center", color: "#888" }}>No projects found.</p>
         ) : (
           projects.map((project, index) => (
@@ -51,13 +63,15 @@ export default function Projects({ t }) {
               <div className={styles.previewImageContainer}>
                 <img
                   src={project.image_url || "/images/default-drone.png"}
-                  alt={`${project.name} drone image`}
+                  alt={`${project.name || "Project"} drone image`}
                   className={styles.previewImage}
                 />
               </div>
+
               <div className={styles.projectOverview}>
-                <h2>{project.name}</h2>
-                <p>{project.summary}</p>
+                <h2>{project.name || "Untitled Project"}</h2>
+                <p>{project.summary || "No summary available."}</p>
+
                 {project.description && (
                   <Link
                     href={`/${project.slug || "project"}`}

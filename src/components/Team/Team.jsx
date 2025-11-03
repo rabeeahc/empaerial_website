@@ -240,9 +240,7 @@ export default function Team({ t }) {
             </article>
           ))}
         </div>
-
-       
-      </div>
+  </div>
     </section>
   );
 }

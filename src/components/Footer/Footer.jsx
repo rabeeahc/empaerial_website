@@ -6,12 +6,12 @@ import styles from "./Footer.module.css";
 export default function Footer({ t }) {
   return (
     <footer className={styles.footer} role="contentinfo">
-      {/* 💬 Comment line */}
+      {}
       <p className={styles.line}>
         <span className={styles.comment}>// {t.footer_follow}</span>
       </p>
 
-      {/* 🌐 Social Media Links */}
+      {}
       <div className={styles.social} aria-label="Social media links">
         <a
           href="https://www.instagram.com/_empaerial_"
@@ -42,9 +42,9 @@ export default function Footer({ t }) {
         </a>
       </div>
 
-      {/* ⚙️ Copyright line */}
+      {}
       <p className={styles.copy}>
-        {/* 🔒 Hidden Admin Login link */}
+        {}
         <Link
           href="/admin-login"
           style={{
