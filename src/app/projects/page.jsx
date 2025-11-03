@@ -35,7 +35,6 @@ fetchProjects();
 
 }, []);
 
-// 🩵 Translation safety guard
 if (!t || !t.projects) {
 return ( <section className={styles.projectSection} id="projects">
 <p style={{ textAlign: "center", color: "#00B4D8" }}>
@@ -43,17 +42,14 @@ Loading translations... </p> </section>
 );
 }
 
-// 🩵 Loading state
 if (loading) {
 return ( <section className={styles.projectSection} id="projects"> <div className={styles.header}> <h2 className={styles.title}>{t.projects.title}</h2> <p className={styles.subtitle}>{t.projects.subtitle}</p> </div>
 <p style={{ textAlign: "center", color: "#888" }}>Loading projects...</p> </section>
 );
 }
 
-// 🩵 Main section
 return ( <section className={styles.projectSection} id="projects"> <div className={styles.header}> <h2 className={styles.title}>{t.projects.title}</h2> <p className={styles.subtitle}>{t.projects.subtitle}</p> </div>
 
-```
   <div className={styles.projectRow}>
     {!Array.isArray(projects) || projects.length === 0 ? (
       <p style={{ textAlign: "center", color: "#888" }}>No projects found.</p>
