@@ -14,11 +14,9 @@ export default function Projects({ t }) {
         const res = await fetch("/api/projects", { cache: "no-store" });
         const data = await res.json();
 
-    
         if (Array.isArray(data)) {
           setProjects(data);
         } else if (data && typeof data === "object" && Array.isArray(data.projects)) {
-          
           setProjects(data.projects);
         } else {
           console.warn("⚠️ Unexpected API format:", data);
@@ -72,16 +70,14 @@ export default function Projects({ t }) {
                 <h2>{project.name || "Untitled Project"}</h2>
                 <p>{project.summary || "No summary available."}</p>
 
-                {project.description && (
-                  <Link
-                    href={`/${project.slug || "project"}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <button className={styles.expandButton}>
-                      {t.projects.viewDetails} →
-                    </button>
-                  </Link>
-                )}
+                <Link
+                  href={`/projects/${project.slug || "project"}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <button className={styles.expandButton}>
+                    {t.projects.viewDetails || "View Details"} →
+                  </button>
+                </Link>
               </div>
             </div>
           ))

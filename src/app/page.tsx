@@ -6,7 +6,7 @@ import Hero from "../components/Hero/Hero";
 import Section from "../components/Section/Section";
 import Footer from "../components/Footer/Footer";
 import Team from "../components/Team/Team";
-import Projects from "../components/Projects/Projects";
+import Projects from "./projects/page";
 import Sponsors from "../components/Sponsors/Sponsors";
 import styles from "./page.module.css";
 

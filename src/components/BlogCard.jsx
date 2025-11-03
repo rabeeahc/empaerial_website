@@ -1,33 +1,53 @@
-export default function BlogCard({ blog }) {
+"use client";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+
+export default function BlogPage() {
+  const { slug } = useParams();
+  const [blog, setBlog] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/blogs")
+      .then((res) => res.json())
+      .then((data) => setBlog(data.find((b) => b.slug === slug)));
+  }, [slug]);
+
+  if (!blog) return <p style={{ color: "#ccc", textAlign: "center" }}>Loading...</p>;
+
   return (
-    <a
-      href={`/blogs/${blog.slug}`}
-      style={{
-        textDecoration: "none",
-        color: "inherit",
-        background: "rgba(255,255,255,0.05)",
-        padding: "1.5rem",
-        borderRadius: "12px",
-        border: "1px solid rgba(255,255,255,0.1)",
-        transition: "0.3s",
-        display: "block",
-      }}
-    >
+    <div style={{ color: "#fff", padding: "2rem", maxWidth: "800px", margin: "auto" }}>
+      <h1 style={{ color: "#00B4D8" }}>{blog.title}</h1>
+      <p style={{ opacity: 0.7 }}>by {blog.author}</p>
       <img
-        src={blog.image_url || "/images/default-drone.png"}
+        src={blog.image_url}
         alt={blog.title}
-        style={{
-          width: "100%",
-          height: "180px",
-          objectFit: "cover",
-          borderRadius: "8px",
-          marginBottom: "1rem",
-        }}
+        style={{ width: "100%", borderRadius: "10px", margin: "1rem 0" }}
       />
-      <h2 style={{ color: "#00B4D8", fontSize: "1.3rem" }}>{blog.title}</h2>
-      <p style={{ color: "#bbb", marginTop: "0.5rem" }}>
-        {blog.content.slice(0, 100)}...
-      </p>
-    </a>
+
+      {blog.video_url && (
+        <video src={blog.video_url} controls style={{ width: "100%", borderRadius: "10px", marginBottom: "1rem" }} />
+      )}
+
+      <p style={{ lineHeight: "1.8", marginBottom: "2rem" }}>{blog.content}</p>
+
+      {blog.graph_data && (
+        <div style={{ height: 300 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              data={blog.graph_data.labels.map((label, i) => ({
+                name: label,
+                value: blog.graph_data.values[i],
+              }))}
+            >
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="value" fill="#00B4D8" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </div>
   );
 }
