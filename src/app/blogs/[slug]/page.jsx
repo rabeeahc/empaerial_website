@@ -41,9 +41,10 @@ export default function BlogPost() {
       </div>
     );
 
-  // ✅ Safe parsing for graph and gallery
+  // ---------------- Data Parsing ----------------
   let graphData = null;
   let gallery = [];
+  let videos = [];
   try {
     if (blog.graph_data)
       graphData =
@@ -55,12 +56,20 @@ export default function BlogPost() {
         typeof blog.gallery_images === "string"
           ? JSON.parse(blog.gallery_images)
           : blog.gallery_images;
+    if (blog.videos)
+      videos =
+        typeof blog.videos === "string"
+          ? JSON.parse(blog.videos)
+          : blog.videos;
   } catch {
     graphData = null;
     gallery = [];
+    videos = [];
   }
   if (!Array.isArray(gallery)) gallery = [];
+  if (!Array.isArray(videos)) videos = [];
 
+  // ---------------- JSX ----------------
   return (
     <div
       style={{
@@ -73,7 +82,7 @@ export default function BlogPost() {
         overflowX: "hidden",
       }}
     >
-      {/* ❌ Close Button */}
+      {/* Close Button */}
       <button
         onClick={() => router.push("/blogs")}
         style={{
@@ -95,7 +104,7 @@ export default function BlogPost() {
         ×
       </button>
 
-      {/* 🧭 Title & Author */}
+      {/* Blog Header */}
       <h1
         style={{
           color: "#00B4D8",
@@ -117,160 +126,117 @@ export default function BlogPost() {
         By {blog.author}
       </p>
 
-      {/* 🧩 Two-Column Layout */}
+      {/* Blog Content */}
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "2rem",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          maxWidth: "1400px",
+          maxWidth: "1200px",
           margin: "0 auto",
+          fontSize: "1.1rem",
+          lineHeight: "1.8",
+          color: "#E0E0E0",
+          textAlign: "justify",
         }}
       >
-        {/* 🖼 Left Column: Gallery */}
-        {gallery.length > 0 && (
-          <div
-            style={{
-              flex: "1 1 420px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "1rem",
-            }}
-          >
-            <h3
-              style={{
-                color: "#00B4D8",
-                textAlign: "center",
-                marginBottom: "0.5rem",
-              }}
-            >
-              
-            </h3>
-
-            {gallery.map((src, i) => (
-              <img
-                key={i}
-                src={src}
-                alt={`Gallery ${i + 1}`}
-                onClick={() => setSelectedImage(src)}
-                style={{
-                  width: "100%",
-                  maxWidth: "420px",
-                  borderRadius: "12px",
-                  objectFit: "cover",
-                  aspectRatio: "16 / 9",
-                  boxShadow: "0 0 14px rgba(0,180,216,0.35)",
-                  cursor: "pointer",
-                  transition: "transform 0.25s ease, box-shadow 0.25s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.03)";
-                  e.currentTarget.style.boxShadow =
-                    "0 0 20px rgba(0,200,255,0.55)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow =
-                    "0 0 14px rgba(0,180,216,0.35)";
-                }}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* 📖 Right Column: Content + Graph */}
+        {/* Gallery Images */}
         <div
           style={{
-            flex: "2 1 600px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2rem",
-            padding: "0 1rem",
+            float: "left",
+            width: "340px",
+            marginRight: "2rem",
+            marginBottom: "1rem",
           }}
         >
-          {/* Blog Text */}
-          <div
-            style={{
-              fontSize: "1.1rem",
-              lineHeight: "1.8",
-              color: "#E0E0E0",
-              textAlign: "justify",
-            }}
-          >
-            {blog.content}
-          </div>
-
-          {/* Graph Section */}
-          {graphData &&
-            graphData.labels &&
-            graphData.values &&
-            graphData.labels.length > 0 && (
-              <div>
-                <h3
-                  style={{
-                    color: "#00B4D8",
-                    marginBottom: "1rem",
-                    textAlign: "center",
-                  }}
-                >
-                  📊 Graph Visualization
-                </h3>
-                <div
-                  style={{
-                    width: "100%",
-                    height: "320px",
-                    borderRadius: "12px",
-                    background:
-                      "linear-gradient(180deg, rgba(0,30,50,0.4), rgba(0,0,0,0.3))",
-                    boxShadow: "0 0 20px rgba(0,180,216,0.15)",
-                    transition: "box-shadow 0.3s ease",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.boxShadow =
-                      "0 0 30px rgba(0,180,255,0.4)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.boxShadow =
-                      "0 0 20px rgba(0,180,216,0.15)")
-                  }
-                >
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart
-                      data={graphData.labels.map((label, i) => ({
-                        label,
-                        value: graphData.values[i],
-                      }))}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#112233" />
-                      <XAxis dataKey="label" stroke="#aaa" />
-                      <YAxis stroke="#aaa" />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: "#001933",
-                          border: "1px solid #00B4D8",
-                          borderRadius: "8px",
-                          color: "#fff",
-                        }}
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="value"
-                        stroke="#00E0FF"
-                        strokeWidth={2}
-                        dot={{ fill: "#00E0FF" }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-            )}
+          {gallery.map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt={`Gallery ${i + 1}`}
+              onClick={() => setSelectedImage(src)}
+              style={{
+                width: "100%",
+                borderRadius: "12px",
+                objectFit: "cover",
+                aspectRatio: "16 / 9",
+                marginBottom: "1rem",
+                boxShadow: "0 0 14px rgba(0,180,216,0.35)",
+                cursor: "pointer",
+                transition: "transform 0.25s ease, box-shadow 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.03)";
+                e.currentTarget.style.boxShadow =
+                  "0 0 20px rgba(0,200,255,0.55)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 0 14px rgba(0,180,216,0.35)";
+              }}
+            />
+          ))}
         </div>
+
+        {/* Blog Text */}
+        <div>{blog.content}</div>
+
+        {/* Graph Section */}
+        {graphData &&
+          graphData.labels &&
+          graphData.values &&
+          graphData.labels.length > 0 && (
+            <div style={{ marginTop: "3rem", clear: "both" }}>
+              <h3
+                style={{
+                  color: "#00B4D8",
+                  marginBottom: "1rem",
+                  textAlign: "center",
+                }}
+              >
+                📊 Graph Visualization
+              </h3>
+              <div
+                style={{
+                  width: "100%",
+                  height: "320px",
+                  borderRadius: "12px",
+                  background:
+                    "linear-gradient(180deg, rgba(0,30,50,0.4), rgba(0,0,0,0.3))",
+                  boxShadow: "0 0 20px rgba(0,180,216,0.15)",
+                }}
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={graphData.labels.map((label, i) => ({
+                      label,
+                      value: graphData.values[i],
+                    }))}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#112233" />
+                    <XAxis dataKey="label" stroke="#aaa" />
+                    <YAxis stroke="#aaa" />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#001933",
+                        border: "1px solid #00B4D8",
+                        borderRadius: "8px",
+                        color: "#fff",
+                      }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="#00E0FF"
+                      strokeWidth={2}
+                      dot={{ fill: "#00E0FF" }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          )}
       </div>
 
-      {/* 🎥 Video */}
+      {/* Single Video URL */}
       {blog.video_url && (
         <div
           style={{
@@ -280,16 +246,6 @@ export default function BlogPost() {
             marginInline: "auto",
           }}
         >
-          <h3
-            style={{
-              color: "#00B4D8",
-              marginBottom: "1rem",
-              textAlign: "center",
-            }}
-          >
-            
-          </h3>
-
           {blog.video_url.includes("youtube") ? (
             <iframe
               width="100%"
@@ -318,7 +274,63 @@ export default function BlogPost() {
         </div>
       )}
 
-      {/* 🪩 Zoom Modal */}
+      {/* 🎬 Multiple Uploaded Videos */}
+      {videos.length > 0 && (
+        <div
+          style={{
+            marginTop: "4rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "1.5rem",
+            width: "100%",
+            maxWidth: "1200px",
+            marginInline: "auto",
+          }}
+        >
+          {videos.map((src, i) => (
+            <div
+              key={i}
+              style={{
+                position: "relative",
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 0 20px rgba(0,180,216,0.25)",
+              }}
+            >
+              {src.includes("youtube") ? (
+                <iframe
+                  width="100%"
+                  height="260"
+                  src={src.replace("watch?v=", "embed/")}
+                  title={`Video ${i + 1}`}
+                  allowFullScreen
+                  style={{
+                    border: "none",
+                    width: "100%",
+                    height: "260px",
+                  }}
+                ></iframe>
+              ) : (
+                <video
+                  width="100%"
+                  height="260"
+                  controls
+                  style={{
+                    width: "100%",
+                    height: "260px",
+                    objectFit: "cover",
+                    borderRadius: "12px",
+                  }}
+                >
+                  <source src={src} type="video/mp4" />
+                </video>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Image Modal */}
       {selectedImage && (
         <div
           onClick={() => setSelectedImage(null)}
@@ -348,7 +360,7 @@ export default function BlogPost() {
         </div>
       )}
 
-      {/* ✨ Animations + Responsive */}
+      {/* Animations + Responsive */}
       <style jsx>{`
         @keyframes fadeIn {
           from {
@@ -368,11 +380,11 @@ export default function BlogPost() {
             opacity: 1;
           }
         }
-
         @media (max-width: 900px) {
-          div[style*="display: flex"][style*="gap: 2rem"] {
-            flex-direction: column;
-            align-items: center;
+          div[style*="float: left"] {
+            float: none !important;
+            width: 100% !important;
+            margin-right: 0 !important;
           }
         }
       `}</style>

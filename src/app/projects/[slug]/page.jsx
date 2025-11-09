@@ -43,7 +43,7 @@ export default function ProjectDetails() {
     <>
       <Header t={t} lang={lang} setLang={setLang} />
       <main className={styles.fullPage}>
-        {/* 📸 Gallery */}
+        {}
         <div className={styles.imageContainer}>
           <div className={styles.imageGrid}>
             {Array.isArray(project.sections) &&
@@ -56,7 +56,7 @@ export default function ProjectDetails() {
           </div>
         </div>
 
-        {/* 🧾 Details */}
+        {}
         <div className={styles.detailsContainer}>
           <h1 className={styles.title}>{project.name}</h1>
           <p className={styles.subtitle}>
@@ -64,7 +64,7 @@ export default function ProjectDetails() {
               'A modular, lightweight quadcopter engineered for precision and endurance.'}
           </p>
 
-          {/* 🧩 Specs */}
+          {}
           {project.sections
             ?.filter((s) => s.type === 'specs')
             .map((s, i) => (
@@ -86,7 +86,7 @@ export default function ProjectDetails() {
               </div>
             ))}
 
-          {/* 🧱 Materials */}
+          {}
           {project.sections
             ?.filter((s) => s.type === 'materials')
             .map((s, i) => (
@@ -110,7 +110,7 @@ export default function ProjectDetails() {
               </div>
             ))}
 
-          {/* 📝 Text sections */}
+          {}
           {project.sections
             ?.filter((s) => s.type === 'text')
             .map((s, i) => (
@@ -120,7 +120,7 @@ export default function ProjectDetails() {
               </div>
             ))}
 
-          {/* ✉️ Contact Section */}
+          {}
           {project.sections?.some((s) => s.type === 'contact') ? (
             project.sections
               .filter((s) => s.type === 'contact')
@@ -156,7 +156,6 @@ export default function ProjectDetails() {
                 </div>
               ))
           ) : (
-            // ✅ Auto fallback if no contact section in DB
             <div className={`${styles.detailsSection} ${styles.contactCard}`}>
               <h2>
                 {lang === 'tr'

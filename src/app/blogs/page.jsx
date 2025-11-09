@@ -122,7 +122,7 @@ export default function BlogsPage() {
                     "0 6px 20px rgba(0,0,0,0.35)";
                 }}
               >
-                {/* ✅ COVER IMAGE ONLY (no gallery here) */}
+                {}
                 <div
                   style={{
                     position: "relative",

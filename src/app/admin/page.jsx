@@ -161,6 +161,7 @@ export default function AdminPage() {
     video_url: "",
     graph_data: { labels: [], values: [] },
     gallery_images: [],
+    videos: [],
     id: null,
   })
 
@@ -278,6 +279,7 @@ export default function AdminPage() {
         slug: item.slug || "",
         id: item.id,
         gallery_images: item.gallery_images || [],
+        videos: item.videos || [],
       })
       try {
         if (item.sections) {
@@ -558,6 +560,58 @@ export default function AdminPage() {
                 )}
               </div>
 
+<div style={{ ...builderBox, padding: "1rem", marginTop: "1rem" }}>
+  <h3 style={miniHeader}>🎬 Blog Videos</h3>
+  <FileDropMultiVideo
+    label="Upload Blog Videos"
+    folder="videos"
+    onUploaded={(urls) =>
+      setBlogForm((prev) => ({
+        ...prev,
+        videos: [...(prev.videos || []), ...urls],
+      }))
+    }
+  />
+  {Array.isArray(blogForm.videos) && blogForm.videos.length > 0 && (
+    <div style={gridThumbs}>
+      {blogForm.videos.map((url, idx) => (
+        <div
+          key={`${url}-${idx}`}
+          style={thumbBox}
+          draggable
+          onDragStart={() => setDragBlogIdx(idx)}
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={() => {
+            if (dragBlogIdx === null || dragBlogIdx === idx) return;
+            setBlogForm((prev) => ({
+              ...prev,
+              videos: moveItem(prev.videos || [], dragBlogIdx, idx),
+            }));
+            setDragBlogIdx(null);
+          }}
+          title="Drag to reorder"
+        >
+          <video src={url} controls style={thumbImg}></video>
+          <button
+            type="button"
+            onClick={() => {
+              setBlogForm((prev) => {
+                const copy = [...(prev.videos || [])];
+                copy.splice(idx, 1);
+                return { ...prev, videos: copy };
+              });
+            }}
+            title="Remove"
+            style={thumbClose}
+          >
+            ✕
+          </button>
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
               {}
               <div style={{ ...builderBox, padding: "1rem" }}>
                 <h3 style={miniHeader}>📊 Graph Builder</h3>
@@ -757,6 +811,65 @@ function FileDropMulti({ label, folder, onUploaded }) {
     </div>
   )
 }
+
+function FileDropMultiVideo({ label, folder, onUploaded }) {
+  const [uploading, setUploading] = useState(false);
+  const [overall, setOverall] = useState(0);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    multiple: true,
+    accept: { "video/*": [] },
+    onDrop: async (files) => {
+      if (!files || files.length === 0) return;
+      setUploading(true);
+      try {
+        const total = files.length;
+        let done = 0;
+        const urls = [];
+        for (const f of files) {
+          const url = await uploadWithProgress(f, folder, () => {});
+          urls.push(url);
+          done += 1;
+          setOverall(Math.round((done / total) * 100));
+        }
+        onUploaded(urls);
+        alert(`✅ Uploaded ${urls.length} video(s)!`);
+      } catch (e) {
+        alert("❌ Some uploads failed");
+      } finally {
+        setUploading(false);
+        setOverall(0);
+      }
+    },
+  });
+
+  return (
+    <div>
+      <div
+        {...getRootProps()}
+        style={{
+          border: "2px dashed rgba(0,180,216,0.4)",
+          borderRadius: "10px",
+          padding: "1rem",
+          textAlign: "center",
+          color: "#00B4D8",
+          background: isDragActive
+            ? "rgba(0,180,216,0.1)"
+            : "rgba(255,255,255,0.04)",
+          cursor: "pointer",
+          transition: "0.3s",
+        }}
+      >
+        <input {...getInputProps()} />
+        {uploading ? (
+          <p>Uploading... {overall}%</p>
+        ) : (
+          <p>{isDragActive ? "Drop videos here" : `${label} (click or drop multiple)`}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 
 function KVEditor({ rows, onChange }) {
   const [dragIdx, setDragIdx] = useState(null);

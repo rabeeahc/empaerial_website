@@ -8,7 +8,6 @@ const ADMIN_PASSWORD = process.env.ADMIN_DELETE_PASSWORD || "Empaerial123";
 
 const supabase = createClient(url, serviceKey || anonKey);
 
-/* ================== GET ================== */
 export async function GET() {
   try {
     const { data, error } = await supabase.from("Blogs").select("*");
@@ -19,7 +18,6 @@ export async function GET() {
   }
 }
 
-/* ================== POST ================== */
 export async function POST(req) {
   try {
     const body = await req.json();
@@ -58,7 +56,6 @@ export async function POST(req) {
   }
 }
 
-/* ================== PATCH ================== */
 export async function PATCH(req) {
   try {
     const body = await req.json();
@@ -67,7 +64,6 @@ export async function PATCH(req) {
     if (!id)
       return NextResponse.json({ error: "Missing blog ID" }, { status: 400 });
 
-    // ✅ Ensure gallery_images always exists (empty array if undefined)
     if (!("gallery_images" in updates)) updates.gallery_images = [];
 
     const { data, error } = await supabase
@@ -84,7 +80,6 @@ export async function PATCH(req) {
   }
 }
 
-/* ================== DELETE ================== */
 export async function DELETE(req) {
   try {
     const { id, password } = await req.json();
