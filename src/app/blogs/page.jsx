@@ -10,11 +10,12 @@ export default function BlogsPage() {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        const res = await fetch("/api/blogs");
+        const res = await fetch("/api/blogs", { cache: "no-store" });
         const data = await res.json();
-        setBlogs(data);
+        setBlogs(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("❌ Failed to load blogs:", err);
+        setBlogs([]);
       } finally {
         setLoading(false);
       }
@@ -80,150 +81,158 @@ export default function BlogsPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "40px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "25px",
             width: "90%",
-            maxWidth: "1200px",
+            maxWidth: "1050px",
             margin: "0 auto",
             justifyItems: "center",
-            alignItems: "stretch",
           }}
         >
-          {blogs.map((blog) => (
-            <div
-              key={blog.id}
-              style={{
-                background: "linear-gradient(135deg, #001418, #048d9c)",
-                borderRadius: "20px",
-                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.4)",
-                overflow: "hidden",
-                color: "#fff",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                height: "100%",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-6px)";
-                e.currentTarget.style.boxShadow =
-                  "0 18px 45px rgba(0, 200, 255, 0.25)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 10px 25px rgba(0, 0, 0, 0.4)";
-              }}
-            >
-              {}
-              <div
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  background: "radial-gradient(circle at center, #082635, #000)",
-                }}
-              >
-                <img
-                  src={blog.image_url || "/images/default-drone.png"}
-                  alt={blog.title}
-                  style={{
-                    width: "80%",
-                    height: "100%",
-                    objectFit: "contain",
-                    opacity: 0.92,
-                    transition: "transform 0.35s ease",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform = "scale(1.03)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.transform = "scale(1)")
-                  }
-                />
-              </div>
+          {blogs.map((blog) => {
+            const cover = blog?.image_url || "/images/default-drone.png";
+            const snippet =
+              (blog?.content || "").length > 100
+                ? blog.content.slice(0, 100) + "..."
+                : blog?.content || "";
 
-              {}
+            return (
               <div
+                key={blog.id}
                 style={{
-                  textAlign: "center",
-                  padding: "25px",
-                  flex: 1,
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "14px",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.35)",
+                  overflow: "hidden",
+                  width: "100%",
+                  maxWidth: "320px",
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "flex-start",
+                  transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-6px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 16px 40px rgba(0, 200, 255, 0.18)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow =
+                    "0 6px 20px rgba(0,0,0,0.35)";
                 }}
               >
-                <h2
+                {/* ✅ COVER IMAGE ONLY (no gallery here) */}
+                <div
                   style={{
-                    color: "#00B4D8",
-                    fontSize: "1.6rem",
-                    marginBottom: "10px",
-                    fontWeight: "700",
-                    fontFamily: "Fira Code",
+                    position: "relative",
+                    width: "100%",
+                    height: "180px",
+                    overflow: "hidden",
                   }}
                 >
-                  {blog.title}
-                </h2>
-                <p
-                  style={{
-                    color: "#E6DB74",
-                    fontStyle: "italic",
-                    marginBottom: "10px",
-                    fontFamily: "Fira Code",
-                  }}
-                >
-                  By {blog.author}
-                </p>
-                <p
-                  style={{
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                    marginBottom: "20px",
-                    fontFamily: "Fira Code",
-                  }}
-                >
-                  {blog.content.length > 120
-                    ? blog.content.slice(0, 120) + "..."
-                    : blog.content}
-                </p>
-
-                {}
-                <Link href={`/blogs/${blog.slug}`} style={{ alignSelf: "center", textDecoration: "none" }}>
-                  <div
+                  <img
+                    src={cover}
+                    alt={blog.title}
                     style={{
-                      background: "rgba(102, 217, 239, 0.15)",
-                      border: "1px solid #00B4D8",
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      transition: "transform 0.35s ease",
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.transform = "scale(1.05)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.transform = "scale(1)")
+                    }
+                  />
+                </div>
+
+                {/* ✅ CONTENT */}
+                <div
+                  style={{
+                    textAlign: "center",
+                    padding: "18px 20px 25px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    flexGrow: 1,
+                  }}
+                >
+                  <h2
+                    style={{
                       color: "#00B4D8",
+                      fontSize: "1.2rem",
+                      marginBottom: "6px",
+                      fontWeight: "700",
                       fontFamily: "Fira Code, monospace",
-                      padding: "10px 22px",
-                      borderRadius: "10px",
-                      cursor: "pointer",
-                      transition: "all 0.25s ease",
-                      backdropFilter: "blur(3px)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "#00B4D8";
-                      e.currentTarget.style.color = "#0b1622";
-                      e.currentTarget.style.transform =
-                        "translateY(-1px) scale(1.02)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(102, 217, 239, 0.15)";
-                      e.currentTarget.style.color = "#00B4D8";
-                      e.currentTarget.style.transform =
-                        "translateY(0) scale(1)";
                     }}
                   >
-                    Read More →
-                  </div>
-                </Link>
+                    {blog.title}
+                  </h2>
+
+                  <p
+                    style={{
+                      color: "#9ad3e3",
+                      fontStyle: "italic",
+                      marginBottom: "10px",
+                      fontFamily: "Fira Code, monospace",
+                      fontSize: ".9rem",
+                    }}
+                  >
+                    By {blog.author}
+                  </p>
+
+                  <p
+                    style={{
+                      color: "#e9eef2",
+                      fontSize: ".9rem",
+                      marginBottom: "16px",
+                      fontFamily: "Fira Code, monospace",
+                      minHeight: "3em",
+                    }}
+                  >
+                    {snippet}
+                  </p>
+
+                  <Link
+                    href={`/blogs/${blog.slug}`}
+                    style={{ alignSelf: "center", textDecoration: "none" }}
+                  >
+                    <div
+                      style={{
+                        background: "rgba(102, 217, 239, 0.15)",
+                        border: "1px solid #00B4D8",
+                        color: "#00B4D8",
+                        fontFamily: "Fira Code, monospace",
+                        padding: "8px 18px",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                        transition: "all 0.25s ease",
+                        fontSize: ".9rem",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#00B4D8";
+                        e.currentTarget.style.color = "#0b1622";
+                        e.currentTarget.style.transform =
+                          "translateY(-1px) scale(1.02)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background =
+                          "rgba(102, 217, 239, 0.15)";
+                        e.currentTarget.style.color = "#00B4D8";
+                        e.currentTarget.style.transform =
+                          "translateY(0) scale(1)";
+                      }}
+                    >
+                      Read More →
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </section>

@@ -71,11 +71,17 @@ export default function ProjectDetails() {
               <div key={i} className={styles.detailsSection}>
                 <h2>{t.vespasian?.specifications || 'Specifications'}</h2>
                 <div className={styles.specGrid}>
-                  {Object.entries(s.data).map(([key, val]) => (
-                    <div key={key}>
-                      <strong>{key.replaceAll('_', ' ')}:</strong> {val || 'N/A'}
-                    </div>
-                  ))}
+                  {Array.isArray(s.data?.rows)
+                    ? s.data.rows.map((item, idx) => (
+                        <div key={idx}>
+                          <strong>{item.key || '—'}:</strong> {item.value || 'N/A'}
+                        </div>
+                      ))
+                    : Object.entries(s.data || {}).map(([key, val]) => (
+                        <div key={key}>
+                          <strong>{key.replaceAll('_', ' ')}:</strong> {val || 'N/A'}
+                        </div>
+                      ))}
                 </div>
               </div>
             ))}
@@ -87,12 +93,19 @@ export default function ProjectDetails() {
               <div key={i} className={styles.detailsSection}>
                 <h2>{t.vespasian?.materials || 'Materials'}</h2>
                 <div className={styles.bomTable}>
-                  {Object.entries(s.data).map(([key, val]) => (
-                    <div key={key} className={styles.bomRow}>
-                      <span>{key}</span>
-                      <span>{val}</span>
-                    </div>
-                  ))}
+                  {Array.isArray(s.data?.rows)
+                    ? s.data.rows.map((item, idx) => (
+                        <div key={idx} className={styles.bomRow}>
+                          <span>{item.key || '—'}</span>
+                          <span>{item.value || 'N/A'}</span>
+                        </div>
+                      ))
+                    : Object.entries(s.data || {}).map(([key, val]) => (
+                        <div key={key} className={styles.bomRow}>
+                          <span>{key}</span>
+                          <span>{val}</span>
+                        </div>
+                      ))}
                 </div>
               </div>
             ))}
@@ -107,35 +120,67 @@ export default function ProjectDetails() {
               </div>
             ))}
 
-          {/* ✉️ Contact */}
-          {project.sections
-            ?.filter((s) => s.type === 'contact')
-            .map((s, i) => (
-              <div
-                key={i}
-                className={`${styles.detailsSection} ${styles.contactCard}`}
-              >
-                <h2>
-                  {t.vespasian?.contact_title ||
-                    `Interested in ${project.name}?`}
-                </h2>
-                <p>
-                  {t.vespasian?.contact_text ||
-                    'For collaborations or sponsorships, contact us.'}
-                </p>
-                <div className={styles.contactActions}>
-                  <a
-                    href={`mailto:${s.data.email}`}
-                    className={styles.primaryBtn}
-                  >
-                    {t.vespasian?.email_us || 'Email Us'}
-                  </a>
-                  <a href={s.data.link} className={styles.secondaryBtn}>
-                    {t.vespasian?.contact_section || 'Contact Section →'}
-                  </a>
+          {/* ✉️ Contact Section */}
+          {project.sections?.some((s) => s.type === 'contact') ? (
+            project.sections
+              .filter((s) => s.type === 'contact')
+              .map((s, i) => (
+                <div
+                  key={i}
+                  className={`${styles.detailsSection} ${styles.contactCard}`}
+                >
+                  <h2>
+                    {lang === 'tr'
+                      ? `${project.name} ile ilgileniyor musunuz?`
+                      : `Interested in ${project.name}?`}
+                  </h2>
+                  <p>
+                    {lang === 'tr'
+                      ? 'İşbirlikleri, sponsorluklar veya sınırlı üretim mevcudiyeti için bizimle iletişime geçin.'
+                      : 'For collaborations, sponsorships, or limited-batch availability, reach out to us.'}
+                  </p>
+                  <div className={styles.contactActions}>
+                    <a
+                      href={`mailto:${s.data?.email || 'empaerial.uav@gmail.com'}`}
+                      className={styles.primaryBtn}
+                    >
+                      {lang === 'tr' ? 'E-posta Gönder' : 'Email Us'}
+                    </a>
+                    <a
+                      href={s.data?.link || '/#contact'}
+                      className={styles.secondaryBtn}
+                    >
+                      {lang === 'tr' ? 'İletişim Bölümü →' : 'Contact Section →'}
+                    </a>
+                  </div>
                 </div>
+              ))
+          ) : (
+            // ✅ Auto fallback if no contact section in DB
+            <div className={`${styles.detailsSection} ${styles.contactCard}`}>
+              <h2>
+                {lang === 'tr'
+                  ? `${project.name} ile ilgileniyor musunuz?`
+                  : `Interested in ${project.name}?`}
+              </h2>
+              <p>
+                {lang === 'tr'
+                  ? 'İşbirlikleri, sponsorluklar veya sınırlı üretim mevcudiyeti için bizimle iletişime geçin.'
+                  : 'For collaborations, sponsorships, or limited-batch availability, reach out to us.'}
+              </p>
+              <div className={styles.contactActions}>
+                <a
+                  href="mailto:empaerial.uav@gmail.com"
+                  className={styles.primaryBtn}
+                >
+                  {lang === 'tr' ? 'E-posta Gönder' : 'Email Us'}
+                </a>
+                <a href="/#contact" className={styles.secondaryBtn}>
+                  {lang === 'tr' ? 'İletişim Bölümü →' : 'Contact Section →'}
+                </a>
               </div>
-            ))}
+            </div>
+          )}
         </div>
       </main>
     </>
