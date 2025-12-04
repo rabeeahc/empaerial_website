@@ -3,6 +3,48 @@ import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useDropzone } from "react-dropzone"
 import { createClient } from "@supabase/supabase-js"
+import CustomSelect from "@/components/CustomSelect";
+
+
+
+const pageContainer = {
+  minHeight: "100vh",
+  background: "radial-gradient(circle at top, #001933 0%, #000814 70%)",
+  padding: "2rem 1rem",
+  color: "#fff",
+  fontFamily: "'Inter', sans-serif",
+  display: "flex",
+  justifyContent: "center",
+};
+
+const panelContainer = { background: "rgba(255,255,255,0.05)", backdropFilter: "blur(12px)", borderRadius: "20px", border: "1px solid rgba(255,255,255,0.1)", padding: "2rem", width: "100%", maxWidth: "1400px", boxShadow: "0 0 30px rgba(0, 255, 255, 0.1)" }
+const title = { textAlign: "center", color: "#00E0FF", fontWeight: "700", marginBottom: "0.5rem", fontSize: "2rem" }
+const subtitle = { textAlign: "center", color: "#A0AEC0", marginBottom: "2rem" }
+const gridContainer = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: "2rem", width: "100%" }
+
+const sectionCard = { background: "rgba(0, 0, 0, 0.35)", borderRadius: "18px", padding: "1.5rem", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 0 15px rgba(0, 180, 216, 0.1)" }
+const sectionTitle = { color: "#00B4D8", fontSize: "1.2rem", marginBottom: "1rem", fontWeight: "600" }
+
+const formLayout = { display: "flex", flexDirection: "column", gap: "0.8rem" }
+const inputField = { background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", padding: "0.7rem 1rem", color: "#EAEAEA", fontSize: "0.95rem", outline: "none" }
+const readonlyInput = { ...inputField, border: "1px dashed rgba(255,255,255,0.2)", color: "#888" }
+
+const submitButton = { background: "linear-gradient(90deg, #00B4D8, #0077B6)", border: "none", borderRadius: "10px", padding: "0.8rem", color: "white", fontWeight: "600", cursor: "pointer", marginTop: "0.3rem", fontSize: "1rem", letterSpacing: "0.3px" }
+const builderBox = { marginTop: "1.5rem", background: "rgba(255,255,255,0.03)", borderRadius: "12px", padding: "1rem", border: "1px solid rgba(255,255,255,0.08)" }
+const addSectionBtn = { background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.3)", color: "#00B4D8", padding: "6px 10px", borderRadius: "8px", cursor: "pointer", fontWeight: "600" }
+const builderTextarea = { background: "rgba(255,255,255,0.06)", color: "#EAEAEA", width: "100%", minHeight: "100px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)", padding: "0.8rem", fontFamily: "monospace" }
+
+const sectionEditorBox = { background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)" }
+const listContainer = { marginTop: "1.8rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1rem", background: "rgba(255,255,255,0.03)", borderRadius: "12px", padding: "1rem", boxShadow: "inset 0 0 10px rgba(0,0,0,0.2)", width: "100%" }
+const scrollList = { maxHeight: "230px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.7rem" }
+const miniHeader = { color: "#00B4D8", marginBottom: "1rem", fontWeight: "600" }
+
+const listItem = { display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(255,255,255,0.06)", padding: "0.9rem 1rem", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 2px 8px rgba(0,0,0,0.15)", marginBottom: "0.8rem", }
+const deleteButton = { background: "rgba(255, 60, 60, 0.15)", border: "1px solid rgba(255, 100, 100, 0.25)", color: "#FF6B6B", padding: "6px 13px", borderRadius: "8px", fontWeight: "600", cursor: "pointer" }
+const iconDeleteBtn = { background: "rgba(255,60,60,0.15)", border: "1px solid rgba(255,100,100,0.3)", color: "#FF6B6B", borderRadius: "8px", cursor: "pointer", padding: "0.3rem 0.8rem", fontWeight: "700" }
+const editButton = { background: "rgba(0, 180, 216, 0.15)", border: "1px solid rgba(0, 180, 216, 0.25)", color: "#00B4D8", padding: "6px 13px", borderRadius: "8px", fontWeight: "600", cursor: "pointer" }
+
+
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 const SUPABASE_ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -107,31 +149,37 @@ export default function AdminPage() {
     if (typeof window !== "undefined") {
       const styleTag = document.createElement("style")
       styleTag.innerHTML = `
-        @media (max-width: 900px) {
-          body { overflow-x: hidden; }
-          [style*="max-width: 1400px"] { padding: 1.2rem !important; }
-          [style*="grid-template-columns: repeat(auto-fit"] {
-            grid-template-columns: 1fr !important;
-            gap: 1.2rem !important;
-          }
-          input, textarea, button { font-size: 0.9rem !important; }
-          h1 { font-size: 1.6rem !important; }
-          h2, h3, h4 { font-size: 1rem !important; }
-          div[style*="padding: 1.5rem"][style*="border-radius: 18px"] {
-            padding: 1rem !important;
-          }
-          div[style*="display: grid"][style*="minmax(90px"] {
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)) !important;
-          }
-        }
-        @media (max-width: 600px) {
-          [style*="padding: 4rem 0"] { padding: 2rem 0 !important; }
-          input, textarea, button { width: 100% !important; }
-          div[style*="grid-template-columns: 32px 1fr 1fr 36px"] {
-            grid-template-columns: 24px 1fr 1fr 28px !important;
-            gap: 0.4rem !important;
-          }
-        }
+        @media (max-width: 768px) {
+  
+  /* Make container cards full width */
+  div[style*="border-radius: 18px"] {
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+
+  /* Fix dropdown spacing & size */
+  select {
+    width: 100% !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 1rem !important;
+    font-size: 0.9rem !important;
+    padding: 0.7rem !important;
+  }
+
+  /* Buttons take full width */
+  button {
+    width: 100% !important;
+    margin-top: 0.4rem !important;
+  }
+
+  /* Member cards stack vertically */
+  div[style*="justify-content: space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.6rem !important;
+  }
+}
+
       `
       document.head.appendChild(styleTag)
       return () => styleTag.remove()
@@ -167,27 +215,59 @@ export default function AdminPage() {
 
   const [dragBlogIdx, setDragBlogIdx] = useState(null)
 
+  const [teams, setTeams] = useState([]);
+  const [memberModalOpen, setMemberModalOpen] = useState(false);
+  const [editingMemberIndex, setEditingMemberIndex] = useState(null);
+
+const [editingMember, setEditingMember] = useState(null);
+
+
+const [teamForm, setTeamForm] = useState({
+  title: "",
+  description: "",
+  members: [],
+  id: null,
+});
+
+// 🆕 For selecting and adding members to existing teams
+const [selectedTeamId, setSelectedTeamId] = useState("");
+const [newMember, setNewMember] = useState({
+  name: "",
+  linkedin: "",
+  age: "",
+  country: "",
+  role: "",
+  skills: "",
+  funFact: "",
+  photo: "",
+});
+
+
+
   useEffect(() => {
     if (typeof window !== "undefined" && sessionStorage.getItem("isAdmin") !== "true") {
       router.push("/admin-login")
     }
   }, [router])
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [projRes, blogRes] = await Promise.all([
-          fetch("/api/projects").then(r => r.json()),
-          fetch("/api/blogs").then(r => r.json()),
-        ])
-        setProjects((projRes || []).filter(p => p && p.name))
-        setBlogs((blogRes || []).filter(b => b && b.title))
-      } catch (err) {
-        console.error("❌ Fetch failed:", err)
-      }
+ useEffect(() => {
+  async function fetchData() {
+    try {
+      const [projRes, blogRes, teamRes] = await Promise.all([
+        fetch("/api/projects").then(r => r.json()),
+        fetch("/api/blogs").then(r => r.json()),
+        fetch("/api/teams").then(r => r.json()), // 🆕 fetch teams
+      ])
+
+      setProjects((projRes || []).filter(p => p && p.name))
+      setBlogs((blogRes || []).filter(b => b && b.title))
+      setTeams((teamRes || []).filter(t => t && (t.title || t.name))) // 🆕 set teams
+    } catch (err) {
+      console.error("❌ Fetch failed:", err)
     }
-    fetchData()
-  }, [])
+  }
+  fetchData()
+}, [])
 
   const generateSlug = text =>
     (text || "")
@@ -270,75 +350,109 @@ export default function AdminPage() {
     }
   }
 
-  const handleEdit = (type, item) => {
-    if (type === "project") {
-      setForm({
-        name: item.name || "",
-        summary: item.summary || "",
-        image_url: item.image_url || "",
-        slug: item.slug || "",
-        id: item.id,
-        gallery_images: item.gallery_images || [],
-        videos: item.videos || [],
-      })
-      try {
-        if (item.sections) {
-          const parsed = Array.isArray(item.sections) ? item.sections : JSON.parse(item.sections)
-          setSections(parsed.filter(s => s.type !== "contact").map(sec => {
-            if (sec.type === "gallery") {
-              return { ...sec, data: { images: Array.isArray(sec.data?.images) ? sec.data.images : [] } }
-            }
-            if (sec.type === "specs" || sec.type === "materials") {
-              return { ...sec, data: normalizeKeyValueSection(sec) }
-            }
-            return sec
-          }))
-        } else {
-          setSections([])
-        }
-      } catch {
-        setSections([])
+const handleEdit = (type, item) => {
+  if (type === "project") {
+    setForm({
+      name: item.name || "",
+      summary: item.summary || "",
+      image_url: item.image_url || "",
+      slug: item.slug || "",
+      id: item.id,
+      gallery_images: item.gallery_images || [],
+      videos: item.videos || [],
+    });
+    try {
+      if (item.sections) {
+        const parsed = Array.isArray(item.sections)
+          ? item.sections
+          : JSON.parse(item.sections);
+        setSections(
+          parsed
+            .filter((s) => s.type !== "contact")
+            .map((sec) => {
+              if (sec.type === "gallery") {
+                return {
+                  ...sec,
+                  data: {
+                    images: Array.isArray(sec.data?.images)
+                      ? sec.data.images
+                      : [],
+                  },
+                };
+              }
+              if (sec.type === "specs" || sec.type === "materials") {
+                return { ...sec, data: normalizeKeyValueSection(sec) };
+              }
+              return sec;
+            })
+        );
+      } else {
+        setSections([]);
       }
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    } else if (type === "blog") {
-      setBlogForm({
-        title: item.title || "",
-        slug: item.slug || "",
-        author: item.author || "",
-        image_url: item.image_url || "",
-        content: item.content || "",
-        video_url: item.video_url || "",
-        graph_data: item.graph_data || { labels: [], values: [] },
-        gallery_images: item.gallery_images || [],
-        id: item.id,
-      })
-      window.scrollTo({ top: 0, behavior: "smooth" })
+    } catch {
+      setSections([]);
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (type === "blog") {
+    setBlogForm({
+      title: item.title || "",
+      slug: item.slug || "",
+      author: item.author || "",
+      image_url: item.image_url || "",
+      content: item.content || "",
+      video_url: item.video_url || "",
+      graph_data: item.graph_data || { labels: [], values: [] },
+      gallery_images: item.gallery_images || [],
+      id: item.id,
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (type === "team") {
+    setTeamForm({
+      title: item.title || item.name || "",
+      description: item.description || "",
+      members: Array.isArray(item.members) ? item.members : [],
+      id: item.id,
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
+}; // ✅ closes handleEdit correctly
+
+
 
   const handleDelete = async (type, id) => {
-    const password = prompt("Enter admin password to confirm deletion:")
-    if (!password) return
-    const url = type === "project" ? "/api/projects" : "/api/blogs"
-    try {
-      const res = await fetch(url, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id, password }),
-      })
-      const result = await res.json()
-      if (!res.ok) {
-        alert(result.error || "Failed to delete")
-        return
-      }
-      alert("✅ Deleted successfully!")
-      if (type === "project") setProjects(prev => prev.filter(p => p?.id !== id))
-      else setBlogs(prev => prev.filter(b => b?.id !== id))
-    } catch (err) {
-      console.error("Delete error:", err)
-      alert("❌ Deletion failed.")
+  const password = prompt("Enter admin password to confirm deletion:");
+  if (!password) return;
+
+  // 🆕 UPDATED line below — supports projects, blogs, and teams
+  const url =
+    type === "project" ? "/api/projects"
+    : type === "blog" ? "/api/blogs"
+    : "/api/teams";
+
+  try {
+    const res = await fetch(url, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, password }),
+    });
+    const result = await res.json();
+    if (!res.ok) {
+      alert(result.error || "Failed to delete");
+      return;
     }
+    alert("✅ Deleted successfully!");
+
+    // 🆕 Update local state correctly for each type
+    if (type === "project") setProjects(prev => prev.filter(p => p?.id !== id));
+    else if (type === "blog") setBlogs(prev => prev.filter(b => b?.id !== id));
+    else if (type === "team") setTeams(prev => prev.filter(t => t?.id !== id));
+
+  } catch (err) {
+    console.error("Delete error:", err);
+    alert("❌ Deletion failed.");
   }
+};
+
 
   const onBlogThumbDragStart = (i) => setDragBlogIdx(i)
   const onBlogThumbDragOver = (e) => e.preventDefault()
@@ -347,6 +461,82 @@ export default function AdminPage() {
     setBlogForm(prev => ({ ...prev, gallery_images: moveItem(prev.gallery_images || [], dragBlogIdx, i) }))
     setDragBlogIdx(null)
   }
+const handleTeamSubmit = async (e) => {
+  e.preventDefault();
+  const method = teamForm.id ? "PATCH" : "POST";
+  try {
+    const res = await fetch("/api/teams", {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(teamForm),
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const updated = await res.json();
+    alert(teamForm.id ? "✅ Team updated!" : "✅ Team added!");
+    if (teamForm.id) {
+      setTeams(prev => prev.map(t => (t.id === teamForm.id ? updated : t)));
+    } else {
+      setTeams(prev => [...prev, updated]);
+    }
+    setTeamForm({ title: "", description: "", members: [], id: null });
+  } catch (err) {
+    console.error("POST error:", err);
+    alert("❌ Failed to save team");
+  }
+};
+
+const handleAddMemberToTeam = async (e) => {
+  e.preventDefault();
+  if (!selectedTeamId) {
+    alert("Please select a team first!");
+    return;
+  }
+
+  try {
+    // Find the selected team
+    const team = teams.find((t) => t.id === selectedTeamId);
+    if (!team) {
+      alert("Team not found!");
+      return;
+    }
+
+    // Add the new member to existing members
+    const updatedTeam = {
+      ...team,
+      members: [...(team.members || []), newMember],
+    };
+
+    // Update in database
+    const res = await fetch("/api/teams", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedTeam),
+    });
+
+    if (!res.ok) throw new Error(await res.text());
+    const result = await res.json();
+
+    // Update locally
+    setTeams((prev) =>
+      prev.map((t) => (t.id === selectedTeamId ? result : t))
+    );
+
+    alert("✅ Member added to team!");
+    setNewMember({
+      name: "",
+      url: "",
+      age: "",
+      country: "",
+      role: "",
+      skills: "",
+      funFact: "",
+      photo: "",
+    });
+  } catch (err) {
+    console.error("Add member failed:", err);
+    alert("❌ Failed to add member");
+  }
+};
 
   return (
     <div style={pageContainer}>
@@ -700,12 +890,253 @@ export default function AdminPage() {
                 </div>
               </div>
             )}
+                    </div>
+
+{/* 🧩 TEAM SECTION — INLINE FORM, WITH LINKEDIN SUPPORT */}
+<div className="team-section" style={sectionCard}>
+  <h2 style={sectionTitle}>👥 Team Management</h2>
+
+  {/* TEAM DROPDOWN */}
+  <CustomSelect
+    label="Select Team"
+    value={selectedTeamId}
+    onChange={(val) => {
+      setSelectedTeamId(val);
+      setEditingMemberIndex(null);
+      setNewMember(null); // reset form
+    }}
+    options={teams.map((t) => ({
+      value: t.id,
+      label: t.title || t.name,
+    }))}
+  />
+
+  {/* ONLY SHOW MEMBERS & FORM WHEN TEAM SELECTED */}
+  {selectedTeamId && (
+    <>
+      <h3 style={{ marginTop: "1rem", color: "#00B4D8" }}>
+        Members of {teams.find((t) => t.id === Number(selectedTeamId))?.title}
+      </h3>
+
+      {/* ADD MEMBER BUTTON */}
+      <button
+        className="team-button"
+        type="button"
+        style={{ ...submitButton, marginBottom: "1rem" }}
+        onClick={() => {
+          setEditingMemberIndex(null);
+          setNewMember({
+            name: "",
+            linkedin: "",
+            age: "",
+            country: "",
+            role: "",
+            skills: "",
+            funFact: "",
+            photo: "",
+          });
+        }}
+      >
+        + Add Member
+      </button>
+
+      {/* MEMBER LIST */}
+      {(teams.find((t) => t.id === Number(selectedTeamId))?.members || []).map(
+        (member, index) => (
+          <div key={index} className="member-card" style={listItem}>
+            <div>
+              <strong>{member.name}</strong>
+              <p style={{ margin: 0, opacity: 0.6, fontSize: "0.8rem" }}>
+                {member.role}
+              </p>
+            </div>
+
+            <div style={{ display: "flex", gap: "0.5rem" }}>
+              {/* EDIT MEMBER */}
+              <button
+                className="team-button"
+                style={editButton}
+                onClick={() => {
+                  // SUPPORT OLD `url` FIELD
+                  setEditingMemberIndex(index);
+                  setNewMember({
+                    ...member,
+                    linkedin: member.linkedin || member.url || "",
+                  });
+                }}
+              >
+                Edit
+              </button>
+
+              {/* DELETE MEMBER */}
+              <button
+                className="team-button"
+                style={deleteButton}
+                onClick={async () => {
+                  const password = prompt("Enter admin password to delete:");
+                  if (!password) return;
+
+                  const team = teams.find(
+                    (t) => t.id === Number(selectedTeamId)
+                  );
+
+                  const res = await fetch("/api/teams", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      teamId: team.id,
+                      deleteName: member.name,
+                      password,
+                    }),
+                  });
+
+                  const result = await res.json();
+                  if (!res.ok) return alert(result.error);
+
+                  setTeams((prev) =>
+                    prev.map((t) => (t.id === team.id ? result : t))
+                  );
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
+        )
+      )}
+
+      {/* INLINE FORM FOR ADD/EDIT */}
+      {newMember && (
+        <div
+          style={{
+            marginTop: "1.5rem",
+            padding: "1rem",
+            borderRadius: "12px",
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.8rem",
+          }}
+        >
+          <h3 style={{ color: "#00B4D8" }}>
+            {editingMemberIndex === null ? "Add Member" : "Edit Member"}
+          </h3>
+
+          {[
+            "name",
+            "linkedin",
+            "age",
+            "country",
+            "role",
+            "skills",
+            "funFact",
+          ].map((field) => (
+            <input
+              key={field}
+              placeholder={
+                field === "linkedin"
+                  ? "LinkedIn Profile Link"
+                  : field
+              }
+              value={newMember[field] || ""}
+              onChange={(e) =>
+                setNewMember({ ...newMember, [field]: e.target.value })
+              }
+              style={inputField}
+              className="team-input"
+            />
+          ))}
+
+          <FileDrop
+            label="Upload Member Photo"
+            folder="team"
+            onUploaded={(url) => setNewMember({ ...newMember, photo: url })}
+          />
+
+          {newMember.photo && (
+            <img
+              src={newMember.photo}
+              style={{
+                width: "100px",
+                borderRadius: "10px",
+                marginTop: "10px",
+              }}
+            />
+          )}
+
+          {/* SAVE MEMBER */}
+          <button
+            className="team-button"
+            type="button"
+            style={submitButton}
+            onClick={async () => {
+              const team = teams.find((t) => t.id === Number(selectedTeamId));
+              const updated = [...team.members];
+
+              // normalize linkedin → url for database
+              const formattedMember = {
+                ...newMember,
+                url: newMember.linkedin || newMember.url || "",
+              };
+
+              if (editingMemberIndex === null)
+                updated.push(formattedMember);
+              else updated[editingMemberIndex] = formattedMember;
+
+              const res = await fetch("/api/teams", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  teamId: team.id,
+                  members: updated,
+                }),
+              });
+
+              const result = await res.json();
+              if (!res.ok) return alert(result.error);
+
+              setTeams((prev) =>
+                prev.map((t) => (t.id === team.id ? result : t))
+              );
+
+              setNewMember(null);
+              setEditingMemberIndex(null);
+            }}
+          >
+            Save
+          </button>
+
+          {/* CANCEL */}
+          <button
+            className="team-button"
+            type="button"
+            style={{ ...submitButton, background: "#444" }}
+            onClick={() => {
+              setNewMember(null);
+              setEditingMemberIndex(null);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
+    </>
+  )}
+</div>
+
+
+
+
+
+
+
         </div>
       </div>
     </div>
   )
 }
+
 
 
 function FileDrop({ label, folder, onUploaded }) {
@@ -1107,31 +1538,118 @@ const thumbClose = {
   cursor: "pointer"
 }
 
+function TeamMemberEditor({ members, onChange }) {
+  const addMember = () =>
+    onChange([
+      ...(members || []),
+      {
+        name: "",
+        url: "",
+        age: "",
+        country: "",
+        role: "",
+        skills: "",
+        funFact: "",
+        photo: "",
+      },
+    ]);
 
-const pageContainer = { minHeight: "100vh", background: "radial-gradient(circle at top, #001933 0%, #000814 70%)", display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "4rem 0", color: "#fff", fontFamily: "'Inter', sans-serif" }
-const panelContainer = { background: "rgba(255,255,255,0.05)", backdropFilter: "blur(12px)", borderRadius: "20px", border: "1px solid rgba(255,255,255,0.1)", padding: "2rem", width: "100%", maxWidth: "1400px", boxShadow: "0 0 30px rgba(0, 255, 255, 0.1)" }
-const title = { textAlign: "center", color: "#00E0FF", fontWeight: "700", marginBottom: "0.5rem", fontSize: "2rem" }
-const subtitle = { textAlign: "center", color: "#A0AEC0", marginBottom: "2rem" }
-const gridContainer = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", gap: "2rem", width: "100%" }
+  const removeMember = (i) =>
+    onChange((members || []).filter((_, idx) => idx !== i));
 
-const sectionCard = { background: "rgba(0, 0, 0, 0.35)", borderRadius: "18px", padding: "1.5rem", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 0 15px rgba(0, 180, 216, 0.1)" }
-const sectionTitle = { color: "#00B4D8", fontSize: "1.2rem", marginBottom: "1rem", fontWeight: "600" }
+  const update = (i, key, val) => {
+    const next = [...(members || [])];
+    next[i] = { ...(next[i] || {}), [key]: val };
+    onChange(next);
+  };
 
-const formLayout = { display: "flex", flexDirection: "column", gap: "0.8rem" }
-const inputField = { background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "10px", padding: "0.7rem 1rem", color: "#EAEAEA", fontSize: "0.95rem", outline: "none" }
-const readonlyInput = { ...inputField, border: "1px dashed rgba(255,255,255,0.2)", color: "#888" }
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+      {(members || []).map((m, i) => (
+        <div
+          key={i}
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            padding: "1rem",
+            borderRadius: "10px",
+            border: "1px solid rgba(255,255,255,0.08)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.6rem",
+          }}
+        >
+          <input
+            placeholder="Name"
+            value={m.name || ""}
+            onChange={(e) => update(i, "name", e.target.value)}
+            style={inputField}
+          />
+          <input
+            placeholder="Country"
+            value={m.country || ""}
+            onChange={(e) => update(i, "country", e.target.value)}
+            style={inputField}
+          />
+          <input
+            placeholder="Role"
+            value={m.role || ""}
+            onChange={(e) => update(i, "role", e.target.value)}
+            style={inputField}
+          />
+          <input
+            placeholder="Skills (comma separated)"
+            value={m.skills || ""}
+            onChange={(e) => update(i, "skills", e.target.value)}
+            style={inputField}
+          />
+          <input
+            placeholder="Fun Fact"
+            value={m.funFact || ""}
+            onChange={(e) => update(i, "funFact", e.target.value)}
+            style={inputField}
+          />
+          <input
+            placeholder="LinkedIn/Profile URL"
+            value={m.url || ""}
+            onChange={(e) => update(i, "url", e.target.value)}
+            style={inputField}
+          />
 
-const submitButton = { background: "linear-gradient(90deg, #00B4D8, #0077B6)", border: "none", borderRadius: "10px", padding: "0.8rem", color: "white", fontWeight: "600", cursor: "pointer", marginTop: "0.3rem", fontSize: "1rem", letterSpacing: "0.3px" }
-const builderBox = { marginTop: "1.5rem", background: "rgba(255,255,255,0.03)", borderRadius: "12px", padding: "1rem", border: "1px solid rgba(255,255,255,0.08)" }
-const addSectionBtn = { background: "rgba(0,180,216,0.1)", border: "1px solid rgba(0,180,216,0.3)", color: "#00B4D8", padding: "6px 10px", borderRadius: "8px", cursor: "pointer", fontWeight: "600" }
-const builderTextarea = { background: "rgba(255,255,255,0.06)", color: "#EAEAEA", width: "100%", minHeight: "100px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)", padding: "0.8rem", fontFamily: "monospace" }
+          <FileDrop
+            label="Upload Member Photo"
+            folder="team"
+            onUploaded={(url) => update(i, "photo", url)}
+          />
+          {m.photo && (
+            <img
+              src={m.photo}
+              alt="member"
+              style={{ width: 80, height: 80, borderRadius: 10, objectFit: "cover" }}
+            />
+          )}
 
-const sectionEditorBox = { background: "rgba(0,0,0,0.3)", padding: "1rem", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)" }
-const listContainer = { marginTop: "1.8rem", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1rem", background: "rgba(255,255,255,0.03)", borderRadius: "12px", padding: "1rem", boxShadow: "inset 0 0 10px rgba(0,0,0,0.2)", width: "100%" }
-const scrollList = { maxHeight: "230px", overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.7rem" }
-const miniHeader = { color: "#00B4D8", marginBottom: "1rem", fontWeight: "600" }
+          <button
+            type="button"
+            onClick={() => removeMember(i)}
+            style={deleteButton}
+          >
+            Remove Member
+          </button>
+        </div>
+      ))}
 
-const listItem = { display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(255,255,255,0.06)", padding: "0.9rem 1rem", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }
-const deleteButton = { background: "rgba(255, 60, 60, 0.15)", border: "1px solid rgba(255, 100, 100, 0.25)", color: "#FF6B6B", padding: "6px 13px", borderRadius: "8px", fontWeight: "600", cursor: "pointer" }
-const iconDeleteBtn = { background: "rgba(255,60,60,0.15)", border: "1px solid rgba(255,100,100,0.3)", color: "#FF6B6B", borderRadius: "8px", cursor: "pointer", padding: "0.3rem 0.8rem", fontWeight: "700" }
-const editButton = { background: "rgba(0, 180, 216, 0.15)", border: "1px solid rgba(0, 180, 216, 0.25)", color: "#00B4D8", padding: "6px 13px", borderRadius: "8px", fontWeight: "600", cursor: "pointer" }
+    {(members?.length || 0) > 1 && (
+  <button
+    type="button"
+    onClick={addMember}
+    style={{ ...addSectionBtn, width: "100%", fontWeight: 600 }}
+  >
+    + Add Member
+  </button>
+)}
+</div>
+);
+}
+
+
+
