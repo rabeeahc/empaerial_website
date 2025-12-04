@@ -10,7 +10,7 @@ export default function AdminLogin() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (id === "empaerial" && password === "nottellingyoumypw00") {
+        if (id === "empaerial" && password === "vespasian25") {
             sessionStorage.setItem("isAdmin", "true"); // ✅ Save login
             router.push("/admin");
         } else {
